@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation AIoT Dashboard | Nhóm 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0a1a2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 150, 255, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-25%, -25%) scale(1); opacity: 0.5; }
+            50% { transform: translate(0%, 0%) scale(1.1); opacity: 1; }
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(10, 20, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #00ff88, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo p {
+            font-size: 0.75rem;
+            color: #8899aa;
+        }
+        
+        .status-badge {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.2rem;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #00ff88);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #8899aa;
+            margin-top: 0.3rem;
+        }
+        
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-card {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .chart-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #aabbcc;
+        }
+        
+        canvas {
+            max-height: 300px;
+        }
+        
+        /* AI Panel */
+        .ai-panel {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 170, 255, 0.05));
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .ai-panel h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ai-panel h3 i {
+            color: #00ff88;
+        }
+        
+        .forecast-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .forecast-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .forecast-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ff88;
+        }
+        
+        .risk-high {
+            color: #ff4444;
+            animation: blink 1s infinite;
+        }
+        
+        .risk-medium {
+            color: #ffaa44;
+        }
+        
+        .risk-low {
+            color: #00ff88;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Command Panel */
+        .command-panel {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff88, #00aa55);
+            color: #0a0f1e;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #ffaa44, #ff8800);
+            color: #0a0f1e;
+        }
+        
+        .alert-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .alert-item {
+            border-left: 6px solid #fff;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.7rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            background: #222b;
+            color: #fff;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .alert-normal {
+            background: #e3f7e3;
+            color: #1a3a1a;
+            border-color: #00ff88;
+        }
+        .alert-warning {
+            background: #fffbe6;
+            color: #a67c00;
+            border-color: #ffaa44;
+        }
+        .alert-danger {
+            background: #ffeaea;
+            color: #b30000;
+            border-color: #ff4444;
+        }
+        .alert-critical {
+            background: linear-gradient(90deg, #ff4444 60%, #ff8800 100%);
+            color: #fff;
+            border-color: #ff0000;
+        }
+        .stat-card.control-panel {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            color: #0a0f1e;
+            border: 2px solid #00bcd4;
+        }
+        .btn-pump-on {
+            background: linear-gradient(135deg, #00ff88, #00aa55);
+            color: #0a0f1e;
+        }
+        .btn-pump-off {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #fff;
+        }
+        .btn-kill {
+            background: linear-gradient(135deg, #ff8800, #ff4444);
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .forecast-box {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
+        
+        /* Pump Indicator */
+        .pump-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        
+        .pump-on {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            animation: pulse-glow 1s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 5px #00ff88; }
+            50% { box-shadow: 0 0 15px #00ff88; }
+        }
+        
+        .pump-off {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1><i class="fas fa-leaf"></i> Smart Irrigation AIoT</h1>
+                <p>Mesh Network | Anomaly Detection | Predictive Analytics</p>
+            </div>
+            <div class="status-badge">
+                <div class="badge">
+                    <i class="fas fa-wifi"></i> <span id="connection-status">Connected</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-microchip"></i> AI: <span id="ai-status">Active</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <!-- Khung Dữ liệu hiện tại + Dự báo AI -->
+            <div>
+                <div class="stat-card" style="min-width: 300px; margin-bottom: 1.5rem;">
+                    <h3><i class="fas fa-database"></i> Thông tin cảm biến</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Độ ẩm đất</div>
+                            <div class="stat-value" id="soil-moisture">--%</div>
+                        </div>
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Nhiệt độ</div>
+                            <div class="stat-value" id="temperature">--°C</div>
+                        </div>
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Độ ẩm không khí</div>
+                            <div class="stat-value" id="humidity">--%</div>
+                        </div>
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Ánh sáng</div>
+                            <div class="stat-value" id="light">--%</div>
+                        </div>
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Tín hiệu LoRa</div>
+                            <div class="stat-value" id="rssi">--dBm</div>
+                        </div>
+                        <div style="flex: 1 1 120px;">
+                            <div class="stat-label">Trạng thái bơm</div>
+                            <div class="stat-value" id="pump-state">--</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card" style="min-width: 300px;">
+                    <h3><i class="fas fa-brain"></i> Dự báo & khuyến nghị</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+                        <div>
+                            <span class="stat-label">Dự báo 30 phút</span>
+                            <span class="stat-value" id="forecast-30min">--%</span>
+                        </div>
+                        <div>
+                            <span class="stat-label">Dự báo 60 phút</span>
+                            <span class="stat-value" id="forecast-60min">--%</span>
+                        </div>
+                        <div>
+                            <span class="stat-label">Mức độ rủi ro</span>
+                            <span class="stat-value" id="risk-level">--</span>
+                        </div>
+                        <div style="margin-top: 0.5rem; background: rgba(0,0,0,0.15); border-radius: 8px; padding: 0.5rem;">
+                            <i class="fas fa-robot"></i> <strong>Khuyến nghị:</strong> 
+                            <span id="ai-recommendation">Đang chờ dữ liệu...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Khung Cảnh báo + Điều khiển nổi bật -->
+            <div>
+                <div class="stat-card" style="min-width: 300px; margin-bottom: 1.5rem; box-shadow: 0 4px 24px rgba(255,68,68,0.2); border: 2px solid #fff;">
+                    <h3 style="font-size:1.3rem;"><i class="fas fa-bell fa-lg"></i> <span style="font-weight:700;">CẢNH BÁO HỆ THỐNG</span></h3>
+                    <div id="alert-list" class="alert-list" style="font-size:1.1rem; min-height: 80px;">
+                        <div style="color: #fff; text-align: center;">Không có cảnh báo</div>
+                    </div>
+                </div>
+                <div class="stat-card control-panel" style="min-width: 300px; text-align:center;">
+                    <h3 style="font-size:1.3rem;"><i class="fas fa-gamepad fa-lg"></i> <span style="font-weight:700;">ĐIỀU KHIỂN BƠM</span></h3>
+                    <div class="button-group" style="justify-content:center; margin-top:1.2rem;">
+                        <button class="btn btn-pump-on" style="font-size:1.1rem; padding:1rem 2rem;" onclick="sendCommand('ON', 180)">
+                            <i class="fas fa-play"></i> BẬT BƠM (3 phút)
+                        </button>
+                        <button class="btn btn-pump-off" style="font-size:1.1rem; padding:1rem 2rem;" onclick="sendCommand('OFF', 0)">
+                            <i class="fas fa-stop"></i> TẮT BƠM
+                        </button>
+                        <button class="btn btn-kill" style="font-size:1.1rem; padding:1rem 2rem;" onclick="emergencyKill()">
+                            <i class="fas fa-skull-crosswalk"></i> KILL SWITCH
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Biểu đồ và Leader Health -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-line"></i> Độ ẩm đất (24h)</h3>
+                <canvas id="moistureChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-line"></i> Dự báo độ ẩm</h3>
+                <canvas id="forecastChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3><i class="fas fa-user-shield"></i> Sức khỏe Leader & dự đoán lỗi</h3>
+                <canvas id="healthGauge" style="height: 200px;"></canvas>
+                <div style="text-align: center; margin-top: 0.5rem; font-size:1.1rem;" id="leader-status">
+                    Đang kiểm tra sức khỏe node Leader...
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Chart instances
+        let moistureCtx, forecastCtx, healthCtx;
+        let moistureChart, forecastChart, healthChart;
+        
+        // Current data
+        let currentData = {};
+        let historyData = [];
+        
+        // Initialize charts
+        function initCharts() {
+            moistureCtx = document.getElementById('moistureChart').getContext('2d');
+            moistureChart = new Chart(moistureCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Độ ẩm đất (%)',
+                        data: [],
+                        borderColor: '#00ff88',
+                        backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { labels: { color: '#fff' } }
+                    },
+                    scales: {
+                        y: { min: 0, max: 100, grid: { color: 'rgba(255,255,255,0.1)' } },
+                        x: { ticks: { color: '#8899aa' } }
+                    }
+                }
+            });
+            
+            forecastCtx = document.getElementById('forecastChart').getContext('2d');
+            forecastChart = new Chart(forecastCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Hiện tại', '+30 phút', '+60 phút'],
+                    datasets: [{
+                        label: 'Độ ẩm đất (%)',
+                        data: [0, 0, 0],
+                        backgroundColor: ['#00ff88', '#00aaff', '#ffaa44'],
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { labels: { color: '#fff' } }
+                    },
+                    scales: {
+                        y: { min: 0, max: 100, grid: { color: 'rgba(255,255,255,0.1)' } }
+                    }
+                }
+            });
+            
+            healthCtx = document.getElementById('healthGauge').getContext('2d');
+            healthChart = new Chart(healthCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Health Score', 'Remaining'],
+                    datasets: [{
+                        data: [100, 0],
+                        backgroundColor: ['#00ff88', '#333'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+        
+        // Fetch latest data
+        async function fetchLatestData() {
+            try {
+                const response = await fetch('/api/devices/DEV001/latest');
+                const data = await response.json();
+                if (data && data.device_id) {
+                    currentData = data;
+                    updateUI(data);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        }
+        
+        // Fetch history
+        async function fetchHistory() {
+            try {
+                const response = await fetch('/api/devices/DEV001/history?limit=24');
+                historyData = await response.json();
+                updateChart(historyData);
+            } catch (error) {
+                console.error('History error:', error);
+            }
+        }
+        
+        // Fetch anomalies
+        async function fetchAnomalies() {
+            try {
+                const response = await fetch('/api/anomalies');
+                const anomalies = await response.json();
+                updateAlerts(anomalies);
+            } catch (error) {
+                console.error('Anomalies error:', error);
+            }
+        }
+        
+        // SocketIO nhận dữ liệu AI và cập nhật Leader Health
+        const socket = io();
+        socket.on('telemetry_update', function(msg) {
+            if (msg && msg.ai_result && msg.ai_result.leader_prediction) {
+                const leader = msg.ai_result.leader_prediction;
+                document.getElementById('leader-status').innerHTML =
+                    `Leader Health: <b>${leader.leader_health_score}</b> | Nguy cơ: <b>${leader.failure_risk}</b> | Gợi ý: <b>${leader.recommended_action}</b>`;
+                if (healthChart) {
+                    healthChart.data.datasets[0].data = [leader.leader_health_score, 100-leader.leader_health_score];
+                    healthChart.update();
+                }
+            }
+        });
+        
+        // Update UI
+        function updateUI(data) {
+            document.getElementById('soil-moisture').innerHTML = `${data.soil_moisture || '--'}%`;
+            document.getElementById('temperature').innerHTML = `${data.temperature || '--'}°C`;
+            document.getElementById('humidity').innerHTML = `${data.humidity || '--'}%`;
+            document.getElementById('light').innerHTML = `${data.light || '--'}%`;
+            document.getElementById('rssi').innerHTML = `${data.rssi || '--'}dBm`;
+            const pumpState = data.pump_state || 'OFF';
+            const pumpElem = document.getElementById('pump-state');
+            pumpElem.innerHTML = pumpState;
+            pumpElem.className = `pump-indicator pump-${pumpState.toLowerCase()}`;
+            // Trigger AI forecast
+            triggerAIForecast(data);
+        }
+        // Trigger AI forecast
+        async function triggerAIForecast(data) {
+            try {
+                const response = await fetch('/api/ai/forecast/soil-moisture', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const forecast = await response.json();
+                document.getElementById('forecast-30min').innerHTML =
+                    forecast.predicted_moisture_30min !== undefined ? `${parseFloat(forecast.predicted_moisture_30min).toFixed(2)}%` : '--%';
+                document.getElementById('forecast-60min').innerHTML =
+                    forecast.predicted_moisture_60min !== undefined ? `${parseFloat(forecast.predicted_moisture_60min).toFixed(2)}%` : '--%';
+                const riskElem = document.getElementById('risk-level');
+                riskElem.innerHTML = forecast.risk_level || '--';
+                riskElem.className = `stat-value risk-${(forecast.risk_level || 'LOW').toLowerCase()}`;
+                document.getElementById('ai-recommendation').innerHTML = forecast.recommendation || 'No recommendation';
+                // Update forecast chart
+                if (forecastChart) {
+                    forecastChart.data.datasets[0].data = [
+                        data.soil_moisture || 0,
+                        forecast.predicted_moisture_30min || 0,
+                        forecast.predicted_moisture_60min || 0
+                    ];
+                    forecastChart.update();
+                }
+            } catch (error) {
+                console.error('Forecast error:', error);
+            }
+        }
+        
+        // Fetch history
+        async function fetchHistory() {
+            try {
+                const response = await fetch('/api/devices/DEV001/history?limit=24');
+                historyData = await response.json();
+                updateChart(historyData);
+            } catch (error) {
+                console.error('History error:', error);
+            }
+        }
+        
+        // Update chart
+        function updateChart(history) {
+            const labels = history.slice().reverse().map(h => {
+                const date = new Date(h.timestamp);
+                return `${date.getHours()}:${String(date.getMinutes()).padStart(2,'0')}`;
+            });
+            const values = history.slice().reverse().map(h => h.soil_moisture);
+            
+            if (moistureChart) {
+                moistureChart.data.labels = labels;
+                moistureChart.data.datasets[0].data = values;
+                moistureChart.update();
+            }
+        }
+        
+        // Update alerts: phân loại mức độ cảnh báo để đổi màu
+        function updateAlerts(anomalies) {
+            const alertDiv = document.getElementById('alert-list');
+            if (!anomalies || anomalies.length === 0) {
+                alertDiv.innerHTML = '<div style="color: #fff; text-align: center;">Không có cảnh báo</div>';
+                return;
+            }
+            alertDiv.innerHTML = anomalies.slice(0, 5).map(a => {
+                let level = 'normal';
+                if (a.anomaly_type && a.anomaly_type.toLowerCase().includes('critical')) level = 'critical';
+                else if (a.anomaly_type && (a.anomaly_type.toLowerCase().includes('leak') || a.anomaly_type.toLowerCase().includes('offline'))) level = 'danger';
+                else if (a.anomaly_type && (a.anomaly_type.toLowerCase().includes('poor') || a.anomaly_type.toLowerCase().includes('drop') || a.anomaly_type.toLowerCase().includes('risk'))) level = 'warning';
+                return `
+                    <div class="alert-item alert-${level}">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        <strong>${a.description || 'Cảnh báo hệ thống'}</strong>
+                        <small style="display:block;">${new Date(a.timestamp).toLocaleString()}</small>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Send command
+        async function sendCommand(command, duration) {
+            try {
+                const response = await fetch('/api/command', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device_id: 'DEV001',
+                        command: command,
+                        duration: duration
+                    })
+                });
+                const result = await response.json();
+                
+                Swal.fire({
+                    title: '✅ Lệnh đã gửi!',
+                    text: `Bơm sẽ ${command === 'ON' ? 'bật' : 'tắt'} ${command === 'ON' ? `trong ${duration} giây` : ''}`,
+                    icon: 'success',
+                    background: '#0a0f1e',
+                    color: '#fff',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            } catch (error) {
+                Swal.fire({
+                    title: '❌ Lỗi!',
+                    text: 'Không thể gửi lệnh đến thiết bị',
+                    icon: 'error',
+                    background: '#0a0f1e',
+                    color: '#fff'
+                });
+            }
+        }
+        
+        // Emergency kill
+        function emergencyKill() {
+            Swal.fire({
+                title: '⚠️ KILL SWITCH',
+                text: 'Bạn có chắc chắn muốn dừng khẩn cấp toàn bộ hệ thống bơm?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ff4444',
+                cancelButtonColor: '#00ff88',
+                confirmButtonText: 'XÁC NHẬN DỪNG',
+                cancelButtonText: 'Hủy',
+                background: '#0a0f1e',
+                color: '#fff'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sendCommand('OFF', 0);
+                    Swal.fire({
+                        title: '🛑 HỆ THỐNG ĐÃ DỪNG',
+                        text: 'Kill switch đã kích hoạt. Vui lòng kiểm tra thiết bị.',
+                        icon: 'warning',
+                        background: '#0a0f1e',
+                        color: '#fff'
+                    });
+                }
+            });
+        }
+        
+        // Auto refresh
+        setInterval(() => {
+            fetchLatestData();
+            fetchHistory();
+            fetchAnomalies();
+        }, 5000);
+        
+        // Initialize
+        initCharts();
+        fetchLatestData();
+        fetchHistory();
+        fetchAnomalies();
+        
+        // Update connection status
+        setInterval(() => {
+            document.getElementById('connection-status').innerHTML = 'Connected';
+            document.getElementById('connection-status').style.color = '#00ff88';
+        }, 1000);
+    </script>
+</body>
+</html>
