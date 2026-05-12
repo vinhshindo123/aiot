@@ -99,29 +99,56 @@ python src/run_training_pipeline.py
 python src/check_outputs.py
 ```
 
-## 6. Deploy model bằng FastAPI
+## 6. Deploy model bằng FastAPI với Interactive Dashboard
 
 ```bash
 source T2_venv/bin/activate
 uvicorn src.app:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Mở trình duyệt vào:
+Truy cập ứng dụng:
 
-```text
-http://127.0.0.1:8000/docs
-```
+- **Dashboard chính**: http://127.0.0.1:8000/dashboard
+- **Dữ liệu trực quan**: http://127.0.0.1:8000/data-viz
+- **Đánh giá mô hình**: http://127.0.0.1:8000/metrics-viz
+- **Công cụ dự đoán** (interactive): http://127.0.0.1:8000/predict-viz
+- **API Documentation**: http://127.0.0.1:8000/docs
 
-Test bằng:
+### Dashboard Features:
+
+✨ **Giao diện trực quan**:
+- 🎨 Thiết kế gradient đẹp mắt
+- 📊 Biểu đồ Plotly interactive (zoom, pan, hover)
+- ⚡ Animation khi hiển thị kết quả
+
+📊 **Dashboard chính**:
+- Metrics chính (R², RMSE, MAE, Test samples)
+- Navigation đến các phần khác
+
+📈 **Data Analysis**:
+- Phân bố CO concentration
+- Phân bố nhiệt độ
+- Phân bố quyết định air quality
+
+📋 **Model Evaluation**:
+- Hiển thị 4 metrics chính (MSE, RMSE, MAE, R²)
+- Biểu đồ cột metrics
+- So sánh predictions vs actual (100 mẫu gần nhất)
+
+🔮 **Prediction Tool** (Interactive):
+- Slider để điều chỉnh tất cả cảm biến real-time
+- Hiển thị giá trị khi kéo slider
+- Button "Predict"
+- Kết quả dự đoán với:
+  - Giá trị CO predict (mg/m³)
+  - Gauge chart với zones (Good/Moderate/Poor/Hazardous)
+  - Quyết định air quality với animation
+  - Safety recommendation
+
+Test qua API:
 
 ```bash
 python src/test_api.py
-```
-
-Kết quả đúng sẽ có dòng:
-
-```text
-API TEST PASSED: FastAPI model deployment is working.
 ```
 
 ## 7. Tiêu chí hoàn thành

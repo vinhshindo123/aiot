@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitoring System</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="particles-bg"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header glass-effect">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🌍</div>
+                    <div>
+                        <h1>Air Quality Monitoring System</h1>
+                        <p>Real-time CO Concentration Prediction & Intelligent Decision Support</p>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="pulse"></span>
+                    LIVE MONITORING
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="metrics-grid" id="metricsGrid">
+            <div class="metric-card glass-effect">
+                <div class="metric-icon">📊</div>
+                <div class="metric-info">
+                    <div class="metric-label">R² Score</div>
+                    <div class="metric-value" id="r2Score">--</div>
+                </div>
+                <div class="trend up">↑ Model Accuracy</div>
+            </div>
+            <div class="metric-card glass-effect">
+                <div class="metric-icon">📉</div>
+                <div class="metric-info">
+                    <div class="metric-label">RMSE (mg/m³)</div>
+                    <div class="metric-value" id="rmseValue">--</div>
+                </div>
+                <div class="trend down">↓ Prediction Error</div>
+            </div>
+            <div class="metric-card glass-effect">
+                <div class="metric-icon">🎯</div>
+                <div class="metric-info">
+                    <div class="metric-label">MAE (mg/m³)</div>
+                    <div class="metric-value" id="maeValue">--</div>
+                </div>
+                <div class="trend down">↓ Deviation</div>
+            </div>
+            <div class="metric-card glass-effect">
+                <div class="metric-icon">📈</div>
+                <div class="metric-info">
+                    <div class="metric-label">Test Samples</div>
+                    <div class="metric-value" id="totalSamples">--</div>
+                </div>
+                <div class="trend">Analyzed</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Prediction Panel -->
+            <div class="prediction-panel glass-effect">
+                <div class="panel-header">
+                    <h2>🔮 CO Prediction Tool</h2>
+                    <p>Adjust sensor parameters for real-time prediction</p>
+                </div>
+                
+                <form id="predictForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>PT08.S1(CO) Sensor</label>
+                            <input type="range" id="co_sensor" min="300" max="3000" value="1100" step="10" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="co_value">1100</span>
+                                <span class="unit">ppm</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>PT08.S2(NMHC) Sensor</label>
+                            <input type="range" id="nmhc_sensor" min="200" max="2500" value="950" step="10" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="nmhc_value">950</span>
+                                <span class="unit">ppb</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>PT08.S3(NOx) Sensor</label>
+                            <input type="range" id="nox_sensor" min="200" max="2500" value="850" step="10" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="nox_value">850</span>
+                                <span class="unit">ppb</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>PT08.S4(NO2) Sensor</label>
+                            <input type="range" id="no2_sensor" min="150" max="2000" value="680" step="10" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="no2_value">680</span>
+                                <span class="unit">ppb</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>PT08.S5(O3) Sensor</label>
+                            <input type="range" id="o3_sensor" min="50" max="2000" value="550" step="10" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="o3_value">550</span>
+                                <span class="unit">ppb</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature</label>
+                            <input type="range" id="temp" min="-10" max="50" value="20" step="1" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="temp_value">20</span>
+                                <span class="unit">°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Relative Humidity</label>
+                            <input type="range" id="humidity" min="0" max="100" value="50" step="1" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="humidity_value">50</span>
+                                <span class="unit">%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Absolute Humidity</label>
+                            <input type="range" id="abs_humidity" min="0" max="50" value="10" step="0.5" class="sensor-slider">
+                            <div class="value-display">
+                                <span id="abs_humidity_value">10</span>
+                                <span class="unit">g/m³</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Hour of Day</label>
+                            <input type="number" id="hour" min="0" max="23" value="12" class="time-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Day of Week</label>
+                            <input type="number" id="dayofweek" min="0" max="6" value="2" class="time-input">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="predict-btn">
+                        <span class="btn-text">Predict CO Concentration</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+                
+                <div id="result" class="result-container" style="display: none;">
+                    <div class="result-header">
+                        <h3>Prediction Result</h3>
+                        <div class="status-badge" id="statusBadge">Active</div>
+                    </div>
+                    <div id="predictionDisplay"></div>
+                    <div id="gaugeChart" class="gauge-container"></div>
+                    <div id="decisionBox"></div>
+                </div>
+            </div>
+            
+            <!-- Visualization Panel -->
+            <div class="visualization-panel">
+                <div class="chart-card glass-effect">
+                    <div class="chart-header">
+                        <h3>📊 CO Concentration Distribution</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-chart="co">Overview</button>
+                        </div>
+                    </div>
+                    <div id="coHistogram" class="chart-container"></div>
+                </div>
+                
+                <div class="chart-card glass-effect">
+                    <div class="chart-header">
+                        <h3>🌡️ Environmental Analysis</h3>
+                    </div>
+                    <div id="tempHistogram" class="chart-container"></div>
+                </div>
+                
+                <div class="chart-card glass-effect">
+                    <div class="chart-header">
+                        <h3>🎯 Model Performance</h3>
+                    </div>
+                    <div id="metricsBar" class="chart-container"></div>
+                </div>
+                
+                <div class="chart-card glass-effect">
+                    <div class="chart-header">
+                        <h3>📈 Predictions vs Actual</h3>
+                    </div>
+                    <div id="predVsActual" class="chart-container"></div>
+                </div>
+                
+                <div class="chart-card glass-effect">
+                    <div class="chart-header">
+                        <h3>🥧 Decision Distribution</h3>
+                    </div>
+                    <div id="decisionPie" class="chart-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
