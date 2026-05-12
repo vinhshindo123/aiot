@@ -318,22 +318,21 @@ Pipeline:
 ### 8.4 Figure Gallery: Training Results
 
 Bên cạnh 3 biểu đồ chính, report cũng lưu trữ các ảnh kết quả train model sau:
-
-1. `outputs/figures/01_co_predictions.png` - Biểu đồ so sánh giá trị CO thực tế và dự đoán theo thời gian.
-2. `outputs/figures/02_residual_plot.png` - Residual plot để kiểm tra phân bố lỗi và bias.
-3. `outputs/figures/03_feature_importance.png` - Biểu đồ hệ số tuyến tính cho thấy độ ảnh hưởng của từng feature.
+1. ![Figures 1](outputs/figures/01_co_predictions.png) - Biểu đồ so sánh giá trị CO thực tế và dự đoán theo thời gian.
+2. ![Figures 2](outputs/figures/02_residual_plot.png) - Residual plot để kiểm tra phân bố lỗi và bias.
+3. ![Figures 3](outputs/figures/03_feature_importance.png) - Biểu đồ hệ số tuyến tính cho thấy độ ảnh hưởng của từng feature.
 
 ### 8.5 Dashboard Deployment Results
 
 Để minh họa kết quả triển khai, dashboard hiển thị lần lượt các ảnh sau:
 
-1. `outputs/figures/dashboard_1.png` - Dashboard chính với các metric R², RMSE, MAE và số lượng mẫu.
-2. `outputs/figures/dashboard_2.png` - Biểu đồ phân bố CO concentration và thống kê dữ liệu.
-3. `outputs/figures/dashboard_3.png` - Biểu đồ phân bố nhiệt độ, độ ẩm và phân tích môi trường.
-4. `outputs/figures/dashboard_4.png` - Biểu đồ đánh giá mô hình với MSE/RMSE/MAE/R².
-5. `outputs/figures/dashboard_5.png` - Biểu đồ so sánh prediction vs actual trên tập mẫu cuối.
-6. `outputs/figures/dashboard_6.png` - Biểu đồ phân phối quyết định air quality (Good/Moderate/Poor/Hazardous).
-7. `outputs/figures/dashboard_7.png` - Công cụ dự đoán tương tác với sliders, gauge chart và khuyến nghị hành động.
+1. ![Dashboard 1](outputs/figures/dashboard_1.png) - Dashboard chính với các metric R², RMSE, MAE và số lượng mẫu.
+2. ![Dashboard 2](outputs/figures/dashboard_2.png) - Biểu đồ phân bố CO concentration và thống kê dữ liệu.
+3. ![Dashboard 3](outputs/figures/dashboard_3.png) - Biểu đồ phân bố nhiệt độ, độ ẩm và phân tích môi trường.
+4. ![Dashboard 4](outputs/figures/dashboard_4.png) - Biểu đồ đánh giá mô hình với MSE/RMSE/MAE/R².
+5. ![Dashboard 5](outputs/figures/dashboard_5.png) - Biểu đồ so sánh prediction vs actual trên tập mẫu cuối.
+6. ![Dashboard 6](outputs/figures/dashboard_6.png) - Biểu đồ phân phối quyết định air quality (Good/Moderate/Poor/Hazardous).
+7. ![Dashboard 7](outputs/figures/dashboard_7.png) - Công cụ dự đoán tương tác với sliders, gauge chart và khuyến nghị hành động.
 
 ## 9. Decision Rule & Anomaly Detection
 
