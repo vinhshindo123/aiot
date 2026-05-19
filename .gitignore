@@ -18,3 +18,7 @@ Thumbs.db
 
 # Tệp log
 *.log
+
+# Tệp PDF
+*.pdf
+pdf

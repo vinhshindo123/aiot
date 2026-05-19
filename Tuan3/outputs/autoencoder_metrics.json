@@ -1,0 +1,21 @@
+{
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1_score": 0.0,
+  "note": "No labels available",
+  "threshold_mse": 0.077536,
+  "model_type": "Multi-sensor Autoencoder",
+  "window_size": 24,
+  "n_sensors": 5,
+  "sensors_used": [
+    "ph",
+    "TDS",
+    "water_level",
+    "DHT_temp",
+    "water_temp"
+  ],
+  "mse_mean": 0.025677,
+  "mse_max": 0.612365,
+  "anomalies_detected": 592,
+  "anomaly_rate": 0.03348984556202975
+}

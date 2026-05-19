@@ -1,0 +1,19 @@
+{
+  "total_events": 705,
+  "severity_distribution": {
+    "MEDIUM": 668,
+    "HIGH": 37
+  },
+  "top_event_types": {
+    "PH_SENSOR_STUCK": 700,
+    "TDS_SENSOR_STUCK": 4,
+    "WATER_LEVEL_SENSOR_STUCK": 1
+  },
+  "decision_distribution": {
+    "CREATE_MONITORING_EVENT": 668,
+    "CREATE_ALERT_AND_HUMAN_CHECK": 37
+  },
+  "high_severity_count": 37,
+  "detection_rate": 0.03983050847457627,
+  "threshold_used": 0.5480386528631196
+}
