@@ -1,0 +1,102 @@
+{
+  "health": {
+    "status": "ok",
+    "model_loaded": true,
+    "model_bundle_path": "/home/vinh_shindo/AIoT/Tuan4/models/forecast_model_bundle_v1.joblib"
+  },
+  "model_info": {
+    "model_loaded": true,
+    "model_name": "Pipeline",
+    "model_version": "linear_regression_v1",
+    "target": "target_temp_next_1",
+    "forecast_horizon_minutes": 5,
+    "input": "history of NODE_03 raw telemetry rows",
+    "output": "predicted_value, risk_level, recommendation, safety_note",
+    "feature_count": 41,
+    "risk_thresholds": {
+      "warning": 28.8,
+      "high": 29.3,
+      "critical": 29.6
+    },
+    "metrics": {
+      "dataset_rows_after_feature_engineering": 4474,
+      "train_rows": 3355,
+      "test_rows": 1119,
+      "target": "target_temp_next_1",
+      "forecast_horizon_steps": 1,
+      "forecast_horizon_minutes": 5,
+      "split_policy": "Chronological split: first 75% train, last 25% test.",
+      "feature_policy": "Use current sensor values, lag/rolling statistics and interaction features from NODE_03 history.",
+      "best_model_name": "linear_regression_v1",
+      "risk_thresholds_from_training_target": {
+        "warning": 28.8,
+        "high": 29.3,
+        "critical": 29.6
+      },
+      "metrics_by_model": {
+        "last_value_baseline": {
+          "mae": 0.3206,
+          "rmse": 0.4084,
+          "mape_percent": 1.1086,
+          "forecast_bias": -0.0009,
+          "model_type": "baseline"
+        },
+        "moving_average_3_baseline": {
+          "mae": 0.2763,
+          "rmse": 0.3512,
+          "mape_percent": 0.9559,
+          "forecast_bias": -0.0017,
+          "model_type": "baseline"
+        },
+        "linear_regression_v1": {
+          "mae": 0.2682,
+          "rmse": 0.3412,
+          "mape_percent": 0.9261,
+          "forecast_bias": -0.0584,
+          "model_type": "Pipeline"
+        },
+        "random_forest_v1": {
+          "mae": 0.3323,
+          "rmse": 0.4064,
+          "mape_percent": 1.144,
+          "forecast_bias": -0.2218,
+          "model_type": "RandomForestRegressor"
+        },
+        "gradient_boosting_advanced_v1": {
+          "mae": 0.2957,
+          "rmse": 0.3659,
+          "mape_percent": 1.0184,
+          "forecast_bias": -0.1616,
+          "model_type": "GradientBoostingRegressor"
+        }
+      },
+      "interpretation_note": "MAE/RMSE/MAPE đo sai số dự báo nhiệt độ, không phải chỉ số phân loại như Precision/Recall/F1.",
+      "safety_note": "Forecast là tín hiệu khuyến nghị, không tự động điều khiển thiết bị."
+    }
+  },
+  "forecast": {
+    "model_output": {
+      "target": "target_temp_next_1",
+      "forecast_horizon_minutes": 5,
+      "predicted_value": 29.4161,
+      "unit": "°C",
+      "model_version": "linear_regression_v1"
+    },
+    "evaluation_hint": {
+      "metrics_file": "outputs/forecast_metrics.json",
+      "best_model_mae": 0.2682,
+      "best_model_rmse": 0.3412
+    },
+    "decision": {
+      "risk_level": "HIGH",
+      "recommendation": "REDUCE_NON_CRITICAL_LOAD_OR_CHECK_HVAC",
+      "reason": "Predicted temperature is 29.42 °C; warning/high/critical boundaries are 28.80/29.30/29.60 °C.",
+      "safety_note": "Forecast là tín hiệu khuyến nghị, không phải lệnh điều khiển tự động."
+    },
+    "api_check": {
+      "latency_ms": 36.73,
+      "input_points": 36,
+      "warnings": []
+    }
+  }
+}
