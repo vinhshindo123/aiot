@@ -1,0 +1,4 @@
+timestamp_utc,endpoint,filename,content_type,status,top1_class,top1_confidence,inference_time_ms
+2026-06-08T17:43:48.117798+00:00,/classify-image,classroom_object.jpg,image/jpeg,ok,desktop computer,0.113012,10.907
+2026-06-09T00:30:41.535017+00:00,/classify-image,classroom_object.jpg,image/jpeg,ok,desktop computer,0.113012,9.598
+2026-06-09T00:51:44.975739+00:00,/classify-image,katana-dao-on-la.jpg,image/jpeg,ok,leafhopper,0.44874,23.025

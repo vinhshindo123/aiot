@@ -24,3 +24,7 @@ Thumbs.db
 pdf
 
 data_farm
+
+*.dockerignore
+*.yml
+*Dockerfile
