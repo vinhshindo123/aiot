@@ -1,14 +1,26 @@
 # AIoT Course Review
 
-Đây là tổng hợp nội dung của 3 tuần lab AIoT trong workspace `AIoT`.
+Đây là tổng hợp nội dung của 5 tuần lab AIoT trong workspace `AIoT`.
 
 ## Tổng quan chung
 
-Dự án chứa ba tuần thực hành AIoT:
+Dự án chứa năm tuần thực hành AIoT:
 
 - `Tuan1/` — Xây dựng hệ thống tưới tiêu thông minh AIoT với MQTT, Flask, Supabase và ESP32.
 - `Tuan2/` — Chuẩn bị dữ liệu chất lượng không khí, huấn luyện baseline model và deploy bằng FastAPI.
 - `Tuan3/` — Phát hiện bất thường thời gian thực, tạo event intelligence và API anomaly detection.
+- `Tuan4/` — Forecasting & model training cho dữ liệu IoT, so sánh pipeline dự báo và đánh giá mô hình.
+- `Tuan5/` — Dockerized multi-model AI inference service cho input telemetry và ảnh, dùng FastAPI, Docker Compose và ONNX.
+
+## Mục lục
+
+- [Tuần 1 — Smart Irrigation AIoT](#tuần-1---smart-irrigation-aiot)
+- [Tuần 2 — Air Quality Data Preparation và Deploy Baseline](#tuần-2---air-quality-data-preparation-và-deploy-baseline)
+- [Tuần 3 — Anomaly Detection & Event Intelligence](#tuần-3---anomaly-detection--event-intelligence)
+- [Tuần 4 — Forecasting & Model Training](#tuần-4---forecasting--model-training)
+- [Tuần 5 — Dockerized Multi-Model AI Inference Service](#tuần-5---dockerized-multi-model-ai-inference-service)
+- [Ghi chú thêm](#ghi-chú-thêm)
+- [Cách chạy nhanh mỗi tuần](#cách-chạy-nhanh-mỗi-tuần)
 
 ## Tuần 1 — Smart Irrigation AIoT
 
@@ -183,6 +195,54 @@ Tuần 4 mở rộng sang forecasting và model training chuyên sâu cho dữ l
 - `Tuan4/Lab_02/outputs/model_card_appliances.md`
 - `Tuan4/Lab_02/outputs/model_card_co2.md`
 
+## Tuần 5 — Dockerized Multi-Model AI Inference Service
+
+### Mục tiêu
+
+Tuần 5 xây dựng một dịch vụ inference AIoT đa năng cho cả telemetry và ảnh:
+
+- Triển khai FastAPI service hỗ trợ các endpoint sensor và ảnh.
+- Kéo model ảnh ONNX nhẹ để demo inference.
+- Đóng gói service bằng Docker và Docker Compose.
+- So sánh chạy local và container.
+
+### Cấu trúc chính
+
+- `Tuan5/Lab_01/app/` — FastAPI application.
+- `Tuan5/Lab_01/models/vision/` — ONNX model ảnh và nhãn ImageNet.
+- `Tuan5/Lab_01/scripts/` — Script tải model và smoke test.
+- `Tuan5/Lab_01/sample_images/` — Ảnh mẫu để test upload.
+- `Tuan5/Lab_01/sample_requests/` — JSON mẫu cho API sensor.
+- `Tuan5/Lab_01/Dockerfile` — Build image Docker.
+- `Tuan5/Lab_01/docker-compose.yml` — Chạy dịch vụ bằng Compose.
+
+### Những gì đã làm
+
+- Tạo FastAPI inference service cho nhiều loại đầu vào: `/detect-anomaly`, `/forecast`, `/predict-risk`, `/classify-image`, `/classify-image-annotated`.
+- Cung cấp giao diện upload ảnh demo tại `/classify-image-demo`.
+- Hướng dẫn chạy local, build Docker và chạy Docker Compose.
+- Tích hợp smoke test, log output, và tài liệu Docker cho sinh viên.
+
+### Chạy nhanh
+
+1. `cd Tuan5/Lab_01`
+2. `python -m venv .venv`
+3. `source .venv/bin/activate`
+4. `pip install -r requirements.txt`
+5. `python scripts/download_vision_model.py`
+6. `uvicorn app.main:app --reload`
+
+Hoặc chạy Docker:
+
+1. `cd Tuan5/Lab_01`
+2. `docker compose up --build`
+
+### Tài liệu liên quan
+
+- `Tuan5/Lab_01/README.md`
+- `Tuan5/Lab_01/RUN_GUIDE.md`
+- `Tuan5/Lab_01/docs/`
+
 ## Ghi chú thêm
 
 - Tài liệu PDF cung cấp bài học nền tảng: từ thiết kế AIoT, luồng dữ liệu, dữ liệu IoT chuẩn, đến anomaly detection và deployment.
@@ -230,3 +290,15 @@ Hoặc với Lab 4 v4 upgrade:
 6. `python src/prepare_datasets.py`
 7. `python src/train_classical_models.py`
 8. `python src/plot_results.py`
+
+### Tuần 5
+1. `cd Tuan5/Lab_01`
+2. `python -m venv .venv`
+3. `source .venv/bin/activate`
+4. `pip install -r requirements.txt`
+5. `python scripts/download_vision_model.py`
+6. `uvicorn app.main:app --reload`
+
+Hoặc chạy bằng Docker:
+1. `cd Tuan5/Lab_01`
+2. `docker compose up --build`

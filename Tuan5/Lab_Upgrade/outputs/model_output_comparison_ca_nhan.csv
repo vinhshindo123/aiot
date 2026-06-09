@@ -1,0 +1,6 @@
+input_name,original_prediction,converted_prediction,original_confidence_or_value,converted_confidence_or_value,match,difference_note
+image_01_golden,golden retriever,golden retriever,0.9662,0.9662,Yes,None
+image_02_dog,Rhodesian ridgeback,Rhodesian ridgeback,0.4968,0.4968,Yes,Low confidence prediction
+image_03_car,beach wagon,beach wagon,0.6306,0.6306,Yes,None
+image_04_keyboard,computer keyboard,computer keyboard,0.7263,0.7263,Yes,None
+image_05_random_art,rapeseed,rapeseed,0.1339,0.1339,Yes,Low confidence prediction

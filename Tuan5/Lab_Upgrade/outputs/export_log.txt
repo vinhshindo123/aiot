@@ -1,0 +1,25 @@
+[2026-06-09 11:10:07] [INFO] ============================================================
+[2026-06-09 11:10:07] [INFO] STARTING ONNX EXPORT
+[2026-06-09 11:10:07] [INFO] ============================================================
+[2026-06-09 11:10:07] [INFO] Loading ResNet18 model...
+[2026-06-09 11:10:08] [INFO] Model loaded successfully
+[2026-06-09 11:10:08] [INFO] Input shape: 1x3x224x224
+[2026-06-09 11:10:08] [INFO] Starting ONNX export...
+[2026-06-09 11:10:13] [SUCCESS] Export completed in 5.77 seconds
+[2026-06-09 11:10:13] [INFO] Verifying ONNX model...
+[2026-06-09 11:10:14] [SUCCESS] ONNX validation passed!
+[2026-06-09 11:10:14] [INFO] Model size: 0.09 MB
+
+============================================================
+EXPORT SUMMARY
+============================================================
+Export Date: 2026-06-09
+PyTorch: 2.12.0+cu130
+ONNX: 1.21.0
+Input Shape: 1x3x224x224
+Command: python export_onnx.py
+Output: resnet18.onnx
+Export Time: 5.77 sec
+Status: SUCCESS
+Warning: None
+============================================================
