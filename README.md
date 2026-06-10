@@ -1,16 +1,17 @@
 # AIoT Course Review
 
-Đây là tổng hợp nội dung của 5 tuần lab AIoT trong workspace `AIoT`.
+Đây là tổng hợp nội dung của 6 tuần lab AIoT trong workspace `AIoT`.
 
 ## Tổng quan chung
 
-Dự án chứa năm tuần thực hành AIoT:
+Dự án chứa sáu tuần thực hành AIoT:
 
 - `Tuan1/` — Xây dựng hệ thống tưới tiêu thông minh AIoT với MQTT, Flask, Supabase và ESP32.
 - `Tuan2/` — Chuẩn bị dữ liệu chất lượng không khí, huấn luyện baseline model và deploy bằng FastAPI.
 - `Tuan3/` — Phát hiện bất thường thời gian thực, tạo event intelligence và API anomaly detection.
 - `Tuan4/` — Forecasting & model training cho dữ liệu IoT, so sánh pipeline dự báo và đánh giá mô hình.
 - `Tuan5/` — Dockerized multi-model AI inference service cho input telemetry và ảnh, dùng FastAPI, Docker Compose và ONNX.
+ - `Tuan6/` — Computer vision & AI vision upgrade: camera as IoT sensor, motion + Faster R-CNN detection, dashboard và event logging.
 
 ## Mục lục
 
@@ -19,6 +20,7 @@ Dự án chứa năm tuần thực hành AIoT:
 - [Tuần 3 — Anomaly Detection & Event Intelligence](#tuần-3---anomaly-detection--event-intelligence)
 - [Tuần 4 — Forecasting & Model Training](#tuần-4---forecasting--model-training)
 - [Tuần 5 — Dockerized Multi-Model AI Inference Service](#tuần-5---dockerized-multi-model-ai-inference-service)
+- [Tuần 6 — Computer Vision & AI Vision Upgrade](#tuần-6---computer-vision--ai-vision-upgrade)
 - [Ghi chú thêm](#ghi-chú-thêm)
 - [Cách chạy nhanh mỗi tuần](#cách-chạy-nhanh-mỗi-tuần)
 
@@ -242,6 +244,49 @@ Hoặc chạy Docker:
 - `Tuan5/Lab_01/README.md`
 - `Tuan5/Lab_01/RUN_GUIDE.md`
 - `Tuan5/Lab_01/docs/`
+
+## Tuần 6 — Computer Vision & AI Vision Upgrade
+
+### Mục tiêu
+
+Tuần 6 đưa camera vào hệ thống AIoT như một cảm biến hình ảnh và nâng cấp bằng môđun phát hiện đối tượng:
+
+- Triển khai stream camera, snapshot, và motion detection.
+- Sinh metadata và event từ ảnh/stream, lưu logs để phân tích.
+- Nâng cấp AI bằng Faster R-CNN (torchvision) để phát hiện `person`/`animal` với bounding box.
+- Tối ưu pipeline để AI chạy bất đồng bộ, tránh làm gián đoạn luồng video.
+
+### Cấu trúc chính
+
+- `Tuan6/Lab_01/` — Lab 6 cơ bản: stream, snapshot, motion, preprocess, metadata, dashboard (`run_lab6_demo.py`, `app.py`, `index.html`).
+- `Tuan6/Lab_upgrade/` — Bản nâng cấp: Faster R-CNN detection, async inference, snapshot + annotated images, `outputs/ai_detection_log.csv`.
+
+### Những gì đã làm
+
+- `Tuan6/Lab_01` cung cấp demo camera/stream như một sensor, lưu ảnh và event, có script chạy thử `run_lab6_demo.py`.
+- `Tuan6/Lab_upgrade` triển khai AI detection bằng `Faster R-CNN`, lưu snapshot đã gắn bounding box, ghi log detection và event.
+
+### Chạy nhanh (Lab_01)
+
+1. `cd Tuan6/Lab_01`
+2. `python -m venv .venv`
+3. `source .venv/bin/activate`
+4. `pip install -r requirements.txt`
+5. `python run_lab6_demo.py`
+6. `uvicorn app:app --reload --host 0.0.0.0 --port 8000`
+
+Mở: `http://127.0.0.1:8000/` và `http://127.0.0.1:8000/docs`
+
+### Chạy nhanh (Lab_upgrade)
+
+1. `cd Tuan6/Lab_upgrade`
+2. `python -m venv .venv`
+3. `source .venv/bin/activate`
+4. `pip install fastapi uvicorn[standard] opencv-python pillow numpy torch torchvision`
+5. `uvicorn app:app --reload --host 0.0.0.0 --port 8000`
+
+Mở: `http://127.0.0.1:8000/`
+
 
 ## Ghi chú thêm
 

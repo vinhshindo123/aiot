@@ -1,0 +1,100 @@
+experiment_id,timestamp,param_group,param_name,param_value,image_id,observed_effect,notes
+exp_57a90128,2026-06-10T09:24:15,Threshold,threshold_value,120,img_4c8562f4dd,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_4c59bb6a,2026-06-10T09:24:15,Canny Edge,canny_low,80,img_4c8562f4dd,Low threshold for edge detection,
+exp_7594b80f,2026-06-10T09:24:15,Canny Edge,canny_high,160,img_4c8562f4dd,High threshold for edge detection,
+exp_7cd98751,2026-06-10T09:25:16,Threshold,threshold_value,120,img_e7fb42eea8,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_f045ed96,2026-06-10T09:25:16,Canny Edge,canny_low,80,img_e7fb42eea8,Low threshold for edge detection,
+exp_6de00ce8,2026-06-10T09:25:16,Canny Edge,canny_high,160,img_e7fb42eea8,High threshold for edge detection,
+exp_5f17cbb9,2026-06-10T09:25:16,Motion Detection,diff_threshold,25,img_e7fb42eea8,Frame difference sensitivity set to 25,"Lower = more sensitive, higher = less noise"
+exp_9009dbf7,2026-06-10T09:25:16,Motion Detection,min_area,800,img_e7fb42eea8,Minimum area for motion: 800,Smaller = detects small movements
+exp_b33e70a7,2026-06-10T09:31:30,Threshold,threshold_value,41,img_0a9e6cda14,"Binary threshold applied, result shows 41 separation",Test effect on image segmentation
+exp_a644615b,2026-06-10T09:31:30,Canny Edge,canny_low,80,img_0a9e6cda14,Low threshold for edge detection,
+exp_e448d94d,2026-06-10T09:31:30,Canny Edge,canny_high,160,img_0a9e6cda14,High threshold for edge detection,
+exp_56cb9170,2026-06-10T09:33:46,Threshold,threshold_value,80,img_db7e5a8826,"Binary threshold applied, result shows 80 separation",Test effect on image segmentation
+exp_b75b6f36,2026-06-10T09:33:46,Canny Edge,canny_low,80,img_db7e5a8826,Low threshold for edge detection,
+exp_c9ba5dfc,2026-06-10T09:33:46,Canny Edge,canny_high,160,img_db7e5a8826,High threshold for edge detection,
+exp_496a6afc,2026-06-10T09:36:34,Threshold,threshold_value,120,img_f33ceda8e0,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_ea22ca22,2026-06-10T09:36:34,Canny Edge,canny_low,80,img_f33ceda8e0,Low threshold for edge detection,
+exp_ac13ceb9,2026-06-10T09:36:34,Canny Edge,canny_high,160,img_f33ceda8e0,High threshold for edge detection,
+exp_981f4d00,2026-06-10T09:37:24,Threshold,threshold_value,180,img_338d040f5c,"Binary threshold applied, result shows 180 separation",Test effect on image segmentation
+exp_138d2b8a,2026-06-10T09:37:24,Canny Edge,canny_low,80,img_338d040f5c,Low threshold for edge detection,
+exp_05d0c3ad,2026-06-10T09:37:24,Canny Edge,canny_high,160,img_338d040f5c,High threshold for edge detection,
+exp_3cc60e60,2026-06-10T09:43:18,Threshold,threshold_value,120,img_2a2c88f2c8,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_09d448ac,2026-06-10T09:43:18,Canny Edge,canny_low,50,img_2a2c88f2c8,Low threshold for edge detection,
+exp_e0978f2c,2026-06-10T09:43:18,Canny Edge,canny_high,100,img_2a2c88f2c8,High threshold for edge detection,
+exp_5d3f538d,2026-06-10T09:43:40,Threshold,threshold_value,120,img_df73f6713d,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_b773f62f,2026-06-10T09:43:40,Canny Edge,canny_low,80,img_df73f6713d,Low threshold for edge detection,
+exp_975b7eb3,2026-06-10T09:43:40,Canny Edge,canny_high,160,img_df73f6713d,High threshold for edge detection,
+exp_c6ac4f14,2026-06-10T09:44:16,Threshold,threshold_value,120,img_eed5df0df0,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_49b93bb4,2026-06-10T09:44:16,Canny Edge,canny_low,150,img_eed5df0df0,Low threshold for edge detection,
+exp_88f3b6e7,2026-06-10T09:44:16,Canny Edge,canny_high,250,img_eed5df0df0,High threshold for edge detection,
+exp_075ae9cc,2026-06-10T09:51:05,Threshold,threshold_value,120,img_4d712cffbf,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_731e47a5,2026-06-10T09:51:05,Canny Edge,canny_low,80,img_4d712cffbf,Low threshold for edge detection,
+exp_150a93c6,2026-06-10T09:51:05,Canny Edge,canny_high,160,img_4d712cffbf,High threshold for edge detection,
+exp_0cde8c3f,2026-06-10T09:51:51,Threshold,threshold_value,120,img_b5a4b39e18,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_d291471c,2026-06-10T09:51:51,Canny Edge,canny_low,80,img_b5a4b39e18,Low threshold for edge detection,
+exp_aa32923f,2026-06-10T09:51:51,Canny Edge,canny_high,160,img_b5a4b39e18,High threshold for edge detection,
+exp_6f5707b4,2026-06-10T09:52:25,Threshold,threshold_value,120,img_803c5d4b39,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_8ead31a9,2026-06-10T09:52:25,Canny Edge,canny_low,80,img_803c5d4b39,Low threshold for edge detection,
+exp_e40fb429,2026-06-10T09:52:25,Canny Edge,canny_high,160,img_803c5d4b39,High threshold for edge detection,
+exp_0c74aa0e,2026-06-10T09:52:25,ROI,roi,"(200, 400, 300, 500)",img_803c5d4b39,"Processing restricted to region (200, 400, 300, 500)",Reduced processing area for efficiency
+exp_4e132978,2026-06-10T09:53:30,Threshold,threshold_value,120,img_7077c36f2e,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_99f7ac55,2026-06-10T09:53:30,Canny Edge,canny_low,80,img_7077c36f2e,Low threshold for edge detection,
+exp_649a70b2,2026-06-10T09:53:30,Canny Edge,canny_high,160,img_7077c36f2e,High threshold for edge detection,
+exp_f83e9c06,2026-06-10T09:53:30,ROI,roi,"(100, 300, 300, 500)",img_7077c36f2e,"Processing restricted to region (100, 300, 300, 500)",Reduced processing area for efficiency
+exp_92015fa6,2026-06-10T09:54:48,Threshold,threshold_value,120,img_b70bd817e8,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_9ecd5664,2026-06-10T09:54:48,Canny Edge,canny_low,80,img_b70bd817e8,Low threshold for edge detection,
+exp_f8a3f670,2026-06-10T09:54:48,Canny Edge,canny_high,160,img_b70bd817e8,High threshold for edge detection,
+exp_78bc9eeb,2026-06-10T09:54:48,ROI,roi,"(200, 300, 300, 500)",img_b70bd817e8,"Processing restricted to region (200, 300, 300, 500)",Reduced processing area for efficiency
+exp_6fa95308,2026-06-10T09:55:22,Threshold,threshold_value,120,img_6523a01bd5,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_b00a4221,2026-06-10T09:55:22,Canny Edge,canny_low,80,img_6523a01bd5,Low threshold for edge detection,
+exp_54566014,2026-06-10T09:55:22,Canny Edge,canny_high,160,img_6523a01bd5,High threshold for edge detection,
+exp_87ab17bf,2026-06-10T09:55:22,ROI,roi,"(400, 300, 300, 500)",img_6523a01bd5,"Processing restricted to region (400, 300, 300, 500)",Reduced processing area for efficiency
+exp_00ba7821,2026-06-10T09:55:40,Threshold,threshold_value,120,img_40831de0dd,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_7288537e,2026-06-10T09:55:40,Canny Edge,canny_low,80,img_40831de0dd,Low threshold for edge detection,
+exp_c7ae6738,2026-06-10T09:55:40,Canny Edge,canny_high,160,img_40831de0dd,High threshold for edge detection,
+exp_c7cd37d9,2026-06-10T09:55:40,ROI,roi,"(400, 300, 300, 500)",img_40831de0dd,"Processing restricted to region (400, 300, 300, 500)",Reduced processing area for efficiency
+exp_aef546b5,2026-06-10T09:56:07,Threshold,threshold_value,120,img_1a25919bb0,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_a9d6d20d,2026-06-10T09:56:07,Canny Edge,canny_low,80,img_1a25919bb0,Low threshold for edge detection,
+exp_c8d261fa,2026-06-10T09:56:07,Canny Edge,canny_high,160,img_1a25919bb0,High threshold for edge detection,
+exp_0468c635,2026-06-10T09:56:07,ROI,roi,"(200, 350, 300, 500)",img_1a25919bb0,"Processing restricted to region (200, 350, 300, 500)",Reduced processing area for efficiency
+exp_0063f780,2026-06-10T09:56:24,Threshold,threshold_value,120,img_87a2d6607d,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_ae5c0ff9,2026-06-10T09:56:24,Canny Edge,canny_low,80,img_87a2d6607d,Low threshold for edge detection,
+exp_10057756,2026-06-10T09:56:24,Canny Edge,canny_high,160,img_87a2d6607d,High threshold for edge detection,
+exp_9f78e5cf,2026-06-10T09:56:24,ROI,roi,"(200, 50, 300, 500)",img_87a2d6607d,"Processing restricted to region (200, 50, 300, 500)",Reduced processing area for efficiency
+exp_c725eace,2026-06-10T09:56:46,Threshold,threshold_value,120,img_70ab768d27,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_d28083f8,2026-06-10T09:56:46,Canny Edge,canny_low,80,img_70ab768d27,Low threshold for edge detection,
+exp_b225ccb5,2026-06-10T09:56:46,Canny Edge,canny_high,160,img_70ab768d27,High threshold for edge detection,
+exp_cf2c9b37,2026-06-10T09:56:46,ROI,roi,"(200, 150, 300, 500)",img_70ab768d27,"Processing restricted to region (200, 150, 300, 500)",Reduced processing area for efficiency
+exp_7be38a2c,2026-06-10T09:59:02,Threshold,threshold_value,120,img_c2bb152032,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_4f688f5e,2026-06-10T09:59:02,Canny Edge,canny_low,80,img_c2bb152032,Low threshold for edge detection,
+exp_b3a2360a,2026-06-10T09:59:02,Canny Edge,canny_high,160,img_c2bb152032,High threshold for edge detection,
+exp_f01c9fb8,2026-06-10T10:01:08,Threshold,threshold_value,120,img_f59643c537,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_5aaf67e4,2026-06-10T10:01:08,Canny Edge,canny_low,80,img_f59643c537,Low threshold for edge detection,
+exp_f94d524e,2026-06-10T10:01:08,Canny Edge,canny_high,160,img_f59643c537,High threshold for edge detection,
+exp_d06e0a01,2026-06-10T10:01:40,Threshold,threshold_value,120,img_c7618ee027,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_46b2e076,2026-06-10T10:01:40,Canny Edge,canny_low,80,img_c7618ee027,Low threshold for edge detection,
+exp_9cbfb0c4,2026-06-10T10:01:40,Canny Edge,canny_high,160,img_c7618ee027,High threshold for edge detection,
+exp_4c4f9112,2026-06-10T10:02:04,Threshold,threshold_value,120,img_4eab55a5e1,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_ddc6047d,2026-06-10T10:02:04,Canny Edge,canny_low,80,img_4eab55a5e1,Low threshold for edge detection,
+exp_4949bdfc,2026-06-10T10:02:04,Canny Edge,canny_high,160,img_4eab55a5e1,High threshold for edge detection,
+exp_6d90b2bd,2026-06-10T10:04:31,Threshold,threshold_value,120,img_bd81936965,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_82a994b8,2026-06-10T10:04:31,Canny Edge,canny_low,80,img_bd81936965,Low threshold for edge detection,
+exp_59427118,2026-06-10T10:04:31,Canny Edge,canny_high,160,img_bd81936965,High threshold for edge detection,
+exp_51e8125e,2026-06-10T10:04:31,Motion Detection,diff_threshold,50,img_bd81936965,Frame difference sensitivity set to 50,"Lower = more sensitive, higher = less noise"
+exp_115def0b,2026-06-10T10:04:31,Motion Detection,min_area,800,img_bd81936965,Minimum area for motion: 800,Smaller = detects small movements
+exp_b89fa3ba,2026-06-10T10:05:06,Threshold,threshold_value,120,img_7148c8f35d,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_20c17c42,2026-06-10T10:05:06,Canny Edge,canny_low,80,img_7148c8f35d,Low threshold for edge detection,
+exp_25faf73a,2026-06-10T10:05:06,Canny Edge,canny_high,160,img_7148c8f35d,High threshold for edge detection,
+exp_991e0677,2026-06-10T10:05:06,Motion Detection,diff_threshold,50,img_7148c8f35d,Frame difference sensitivity set to 50,"Lower = more sensitive, higher = less noise"
+exp_38e4facf,2026-06-10T10:05:06,Motion Detection,min_area,500,img_7148c8f35d,Minimum area for motion: 500,Smaller = detects small movements
+exp_b90ec7d8,2026-06-10T10:05:26,Threshold,threshold_value,120,img_3bd183bad3,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_76a1ff10,2026-06-10T10:05:26,Canny Edge,canny_low,80,img_3bd183bad3,Low threshold for edge detection,
+exp_49af6175,2026-06-10T10:05:26,Canny Edge,canny_high,160,img_3bd183bad3,High threshold for edge detection,
+exp_720e51e7,2026-06-10T10:05:26,Motion Detection,diff_threshold,50,img_3bd183bad3,Frame difference sensitivity set to 50,"Lower = more sensitive, higher = less noise"
+exp_4027311a,2026-06-10T10:05:26,Motion Detection,min_area,800,img_3bd183bad3,Minimum area for motion: 800,Smaller = detects small movements
+exp_89fe5ee1,2026-06-10T10:05:41,Threshold,threshold_value,120,img_0e2d4dd66f,"Binary threshold applied, result shows 120 separation",Test effect on image segmentation
+exp_58eece94,2026-06-10T10:05:41,Canny Edge,canny_low,80,img_0e2d4dd66f,Low threshold for edge detection,
+exp_7a354b74,2026-06-10T10:05:41,Canny Edge,canny_high,160,img_0e2d4dd66f,High threshold for edge detection,
+exp_c0c73668,2026-06-10T10:05:41,Motion Detection,diff_threshold,50,img_0e2d4dd66f,Frame difference sensitivity set to 50,"Lower = more sensitive, higher = less noise"
+exp_67ba7d1b,2026-06-10T10:05:41,Motion Detection,min_area,1000,img_0e2d4dd66f,Minimum area for motion: 1000,Smaller = detects small movements

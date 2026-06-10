@@ -1,0 +1,103 @@
+event_id,image_id,timestamp,event_type,score,severity,explanation,action_hint,rule_used
+evt_7d424f2efd,ai_7df3a8aae4,2026-06-10T10:21:47,AI_UNKNOWN,1472.5,INFO,⚠️ Motion detected but not classified as person/animal,Review captured image. Classification: unknown,confidence=0.094
+evt_7220f388af,ai_a2672782ac,2026-06-10T10:21:51,AI_UNKNOWN,1159.5,INFO,⚠️ Motion detected but not classified as person/animal,Review captured image. Classification: unknown,confidence=0.096
+evt_b245330b7b,ai_28d2c3f7df,2026-06-10T10:21:55,AI_UNKNOWN,690.0,INFO,⚠️ Motion detected but not classified as person/animal,Review captured image. Classification: unknown,confidence=0.185
+evt_3cd48b0adc,ai_8bf82f1d13,2026-06-10T10:21:59,AI_UNKNOWN,32992.0,INFO,⚠️ Motion detected but not classified as person/animal,Review captured image. Classification: unknown,confidence=0.114
+evt_278be3c2,snapshot_8f470ac3,2026-06-10T10:34:59,AI_UNKNOWN,166855.0,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_bf5139d1,snapshot_aaf8e996,2026-06-10T10:35:09,AI_ANIMAL,837.0,WARNING,🐾 ANIMAL DETECTED: thunder snake (Confidence: 2.0%),Check snapshot for details,confidence_threshold=0.5
+evt_03f0bc2a,snapshot_a87d0dab,2026-06-10T10:35:13,AI_UNKNOWN,705.5,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_a4cefe94,snapshot_6614ba83,2026-06-10T10:35:15,AI_UNKNOWN,1433.0,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_1e6c5240,snapshot_c6b25a87,2026-06-10T10:35:18,AI_UNKNOWN,730.0,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_02789445,snapshot_3e16620d,2026-06-10T10:35:20,AI_UNKNOWN,9184.5,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_6b3e7de4,snapshot_aac5aece,2026-06-10T10:35:23,AI_UNKNOWN,1015.5,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_aa1e5e92,snapshot_eb5922f2,2026-06-10T10:35:25,AI_UNKNOWN,1067.0,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_5437ad7f,snapshot_2974869a,2026-06-10T10:35:28,AI_UNKNOWN,588.5,INFO,⚠️ Motion detected: unknown,Check snapshot for details,confidence_threshold=0.5
+evt_7c49bfa4,snapshot_8efaaee6,2026-06-10T10:35:30,AI_ANIMAL,644.0,WARNING,🐾 ANIMAL DETECTED: wire-haired fox terrier (Confidence: 3.1%),Check snapshot for details,confidence_threshold=0.5
+evt_582917ec,snapshot_be7d29b2,2026-06-10T10:35:32,AI_ANIMAL,805.5,WARNING,🐾 ANIMAL DETECTED: persian cat (Confidence: 3.3%),Check snapshot for details,confidence_threshold=0.5
+evt_ff479ed8,snapshot_92baac9d,2026-06-10T10:35:36,AI_ANIMAL,847.0,WARNING,🐾 ANIMAL DETECTED: persian cat (Confidence: 3.6%),Check snapshot for details,confidence_threshold=0.5
+evt_24152d45,snapshot_28411653,2026-06-10T10:43:01,AI_UNKNOWN,1929.5,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_2f6cff59,snapshot_8fa70d3e,2026-06-10T10:43:06,AI_ANIMAL,676.5,WARNING,🐾 ANIMAL DETECTED: arctic fox (Confidence: 3.2%),Check snapshot,confidence_threshold=0.5
+evt_9fc51c02,snapshot_18da2259,2026-06-10T10:43:13,AI_UNKNOWN,1262.5,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_e37f4f93,snapshot_3fef4a78,2026-06-10T10:43:17,AI_ANIMAL,591.0,WARNING,🐾 ANIMAL DETECTED: siamese cat (Confidence: 7.0%),Check snapshot,confidence_threshold=0.5
+evt_c59ed6fe,snapshot_38f1b51c,2026-06-10T10:43:21,AI_ANIMAL,577.5,WARNING,🐾 ANIMAL DETECTED: piggy bank (Confidence: 4.5%),Check snapshot,confidence_threshold=0.5
+evt_ec7beba6,snapshot_9c634a3a,2026-06-10T10:43:25,AI_UNKNOWN,2783.0,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_26f807d2,snapshot_205d4ca9,2026-06-10T10:43:30,AI_UNKNOWN,4150.5,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_42b5d60c,snapshot_8a879cbb,2026-06-10T10:43:34,AI_ANIMAL,1543.5,WARNING,🐾 ANIMAL DETECTED: piggy bank (Confidence: 2.2%),Check snapshot,confidence_threshold=0.5
+evt_62b342d3,snapshot_be55b48b,2026-06-10T10:43:39,AI_ANIMAL,616.0,WARNING,🐾 ANIMAL DETECTED: sea lion (Confidence: 1.1%),Check snapshot,confidence_threshold=0.5
+evt_f17c0b92,snapshot_2980254c,2026-06-10T10:43:43,AI_UNKNOWN,1287.5,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_2a38350b,snapshot_0fe24d72,2026-06-10T10:43:48,AI_UNKNOWN,831.5,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_b5a75f43,snapshot_a2ef2bc2,2026-06-10T10:43:55,AI_UNKNOWN,3600.0,INFO,⚠️ Motion detected,Check snapshot,confidence_threshold=0.5
+evt_a5802f1a,snapshot_e0a2f224,2026-06-10T10:43:59,AI_ANIMAL,892.0,WARNING,🐾 ANIMAL DETECTED: arctic fox (Confidence: 14.7%),Check snapshot,confidence_threshold=0.5
+evt_8405eaa5,snapshot_dcbd7722,2026-06-10T10:53:48,AI_ANIMAL,535.0,WARNING,🐾 ANIMAL DETECTED: bearskin (Confidence: 5.7%),Check snapshot,confidence_threshold=0.3
+evt_15150201,snapshot_da5ceb5e,2026-06-10T10:53:52,AI_UNKNOWN,6016.0,INFO,⚠️ Motion detected - torch,Check snapshot,confidence_threshold=0.3
+evt_01202fe8,snapshot_8818cdee,2026-06-10T10:53:57,AI_UNKNOWN,507.0,INFO,⚠️ Motion detected - neck brace,Check snapshot,confidence_threshold=0.3
+evt_b6cd4afa,snapshot_2deab08c,2026-06-10T10:54:02,AI_ANIMAL,844.0,WARNING,🐾 ANIMAL DETECTED: bearskin (Confidence: 3.3%),Check snapshot,confidence_threshold=0.3
+evt_f55266b6,snapshot_07150d17,2026-06-10T10:54:06,AI_UNKNOWN,2166.5,INFO,⚠️ Motion detected - seat belt,Check snapshot,confidence_threshold=0.3
+evt_235b8c4b,snapshot_3469073a,2026-06-10T10:54:19,AI_ANIMAL,552.5,WARNING,🐾 ANIMAL DETECTED: sloth bear (Confidence: 7.8%),Check snapshot,confidence_threshold=0.3
+evt_6a449721,snapshot_c677abe4,2026-06-10T10:54:24,AI_ANIMAL,550.0,WARNING,🐾 ANIMAL DETECTED: wire-haired fox terrier (Confidence: 5.4%),Check snapshot,confidence_threshold=0.3
+evt_35e90037,snapshot_f05f7382,2026-06-10T11:04:27,AI_UNKNOWN,2129.0,INFO,⚠️ Motion detected - neck brace,Check snapshot,confidence_threshold=0.3
+evt_aac1cfad,snapshot_286e9fac,2026-06-10T11:04:31,AI_UNKNOWN,1219.5,INFO,⚠️ Motion detected - analog clock,Check snapshot,confidence_threshold=0.3
+evt_9e443bb9,snapshot_54b6fdc6,2026-06-10T11:04:35,AI_UNKNOWN,14568.5,INFO,⚠️ Motion detected - cellular telephone,Check snapshot,confidence_threshold=0.3
+evt_34612c51,snapshot_eb5b70d1,2026-06-10T11:04:39,AI_UNKNOWN,5596.0,INFO,⚠️ Motion detected - seat belt,Check snapshot,confidence_threshold=0.3
+evt_017dbb06,snapshot_9282c29a,2026-06-10T11:04:44,AI_UNKNOWN,851.0,INFO,⚠️ Motion detected - prison,Check snapshot,confidence_threshold=0.3
+evt_c2ce65b3,snapshot_2d974614,2026-06-10T11:04:47,AI_UNKNOWN,1117.5,INFO,⚠️ Motion detected - suit,Check snapshot,confidence_threshold=0.3
+evt_984e721a,snapshot_5f297bb3,2026-06-10T11:04:50,AI_UNKNOWN,950.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,confidence_threshold=0.3
+evt_c5d48840,snapshot_223a8b74,2026-06-10T11:04:55,AI_UNKNOWN,1705.5,INFO,⚠️ Motion detected - cowboy hat,Check snapshot,confidence_threshold=0.3
+evt_e4d561db,snapshot_309c4bde,2026-06-10T11:05:00,AI_UNKNOWN,2631.0,INFO,⚠️ Motion detected - cleaver,Check snapshot,confidence_threshold=0.3
+evt_766324d3,snapshot_63b5d1db,2026-06-10T11:05:04,AI_UNKNOWN,9365.5,INFO,⚠️ Motion detected - cellular telephone,Check snapshot,confidence_threshold=0.3
+evt_698ad9e2,snapshot_ba045853,2026-06-10T11:05:08,AI_UNKNOWN,52157.5,INFO,⚠️ Motion detected - beer glass,Check snapshot,confidence_threshold=0.3
+evt_2afcc37c,snapshot_8ec36bab,2026-06-10T11:05:15,AI_UNKNOWN,2122.0,INFO,⚠️ Motion detected - lab coat,Check snapshot,confidence_threshold=0.3
+evt_e1bc4c02,snapshot_9b5ae9f2,2026-06-10T11:05:21,AI_UNKNOWN,876.5,INFO,⚠️ Motion detected - television,Check snapshot,confidence_threshold=0.3
+evt_3a9e515b,snapshot_9137af9e,2026-06-10T11:05:25,AI_UNKNOWN,7561.0,INFO,⚠️ Motion detected - seat belt,Check snapshot,confidence_threshold=0.3
+evt_1137639a,detect_349cb741,2026-06-10T11:17:47,AI_UNKNOWN,2024.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50
+evt_041ff11c,detect_44d8d7ae,2026-06-10T11:17:51,AI_UNKNOWN,1978.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50
+evt_c33d9743,detect_bf4d7b61,2026-06-10T11:18:00,AI_UNKNOWN,1066.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50
+evt_087b0da6,detect_97f1395b,2026-06-10T11:18:02,AI_UNKNOWN,1247.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50
+evt_8605acca,snapshot_59feab92,2026-06-10T11:18:59,AI_UNKNOWN,857.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_a1fbfa87,snapshot_990f26e2,2026-06-10T11:19:03,AI_UNKNOWN,2167.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_7874fdac,snapshot_9bbe731d,2026-06-10T11:19:10,AI_UNKNOWN,625.0,INFO,⚠️ Motion detected - windsor tie,Check snapshot,resnet50_person_animal
+evt_55e3bb90,snapshot_f4af749e,2026-06-10T11:19:20,AI_UNKNOWN,775.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_b64c13e1,snapshot_88c77c8b,2026-06-10T11:19:27,AI_UNKNOWN,1037.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_c1cbb1ef,snapshot_f61f6832,2026-06-10T11:19:31,AI_UNKNOWN,8697.5,INFO,⚠️ Motion detected - neck brace,Check snapshot,resnet50_person_animal
+evt_9ac5b82f,snapshot_ae8e4618,2026-06-10T11:19:34,AI_UNKNOWN,1976.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_d3744346,snapshot_b2735563,2026-06-10T11:19:39,AI_UNKNOWN,2635.5,INFO,⚠️ Motion detected - breastplate,Check snapshot,resnet50_person_animal
+evt_8a72d11d,snapshot_22f428f9,2026-06-10T11:19:43,AI_UNKNOWN,794.5,INFO,⚠️ Motion detected - plunger,Check snapshot,resnet50_person_animal
+evt_d24b7279,snapshot_4a103f6c,2026-06-10T11:19:47,AI_UNKNOWN,6089.0,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_b8a012db,snapshot_b91b2576,2026-06-10T11:19:51,AI_UNKNOWN,949.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_e7f1311d,snapshot_798a5f9b,2026-06-10T11:19:56,AI_UNKNOWN,2177.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_985d44a7,snapshot_fec999b4,2026-06-10T11:20:00,AI_UNKNOWN,27292.0,INFO,⚠️ Motion detected - lab coat,Check snapshot,resnet50_person_animal
+evt_981f90bc,snapshot_f52d8e3e,2026-06-10T11:20:05,AI_UNKNOWN,757.0,INFO,⚠️ Motion detected - military uniform,Check snapshot,resnet50_person_animal
+evt_40f71596,snapshot_a74ee531,2026-06-10T11:20:09,AI_UNKNOWN,804.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_520874c5,snapshot_bc36c997,2026-06-10T11:20:14,AI_UNKNOWN,851.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_6d3497cf,snapshot_21fc04e4,2026-06-10T11:20:20,AI_UNKNOWN,731.0,INFO,⚠️ Motion detected - neck brace,Check snapshot,resnet50_person_animal
+evt_700caa85,snapshot_85c9eb8d,2026-06-10T11:20:24,AI_UNKNOWN,786.5,INFO,⚠️ Motion detected - bow tie,Check snapshot,resnet50_person_animal
+evt_bf2e51f5,snapshot_1c91d568,2026-06-10T11:20:32,AI_UNKNOWN,729.5,INFO,⚠️ Motion detected - bulletproof vest,Check snapshot,resnet50_person_animal
+evt_25fba096,detect_fc88d4b6,2026-06-10T11:25:56,AI_UNKNOWN,69534.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_688f6218,detect_dcaf984b,2026-06-10T11:25:58,AI_UNKNOWN,1559.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_e0084185,detect_391ad51f,2026-06-10T11:26:06,AI_PERSON,741.0,CRITICAL,🚨 PERSON DETECTED! Confidence: 1.6%,Check snapshot,resnet50_optimized
+evt_87b090f0,detect_42cb2e2c,2026-06-10T11:26:08,AI_UNKNOWN,525.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_89e3a719,detect_2d688fd9,2026-06-10T11:26:14,AI_UNKNOWN,1015.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_41fe2838,detect_bb650fd7,2026-06-10T11:26:16,AI_UNKNOWN,858.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_ed763848,detect_ee92366d,2026-06-10T11:26:18,AI_UNKNOWN,515.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_68751798,detect_cba63786,2026-06-10T11:26:23,AI_UNKNOWN,1025.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_3b446a0f,detect_ad19593c,2026-06-10T11:26:25,AI_UNKNOWN,517.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_b33cce8a,detect_089a492e,2026-06-10T11:26:28,AI_UNKNOWN,531.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_c1317802,detect_a9a2ed55,2026-06-10T11:26:36,AI_UNKNOWN,527.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_b51b3b05,detect_4b4310ae,2026-06-10T11:26:40,AI_UNKNOWN,1392.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_a2186fe8,detect_95966c9a,2026-06-10T11:26:43,AI_UNKNOWN,685.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_4636009c,detect_f5ed3452,2026-06-10T11:26:45,AI_UNKNOWN,997.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_77b32a93,detect_78d5de71,2026-06-10T11:26:47,AI_UNKNOWN,10075.5,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_34b50ce6,detect_eb2aa96a,2026-06-10T11:26:50,AI_UNKNOWN,1977.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_9873e59c,detect_1f81f080,2026-06-10T11:26:59,AI_UNKNOWN,568.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_a52a5d34,detect_521c1a6b,2026-06-10T11:27:02,AI_UNKNOWN,502.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_a456b6f9,detect_c3262967,2026-06-10T11:27:06,AI_UNKNOWN,1645.0,INFO,⚠️ Motion detected (unclassified),Check snapshot,resnet50_optimized
+evt_279716e7,detect_14544f29,2026-06-10T11:40:24,FASTER_RCNN_PERSON,501.5,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.8%,Check snapshot,faster_rcnn_confidence=0.5
+evt_b797dd0e,detect_4f88433e,2026-06-10T11:40:28,FASTER_RCNN_PERSON,506.0,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.7%,Check snapshot,faster_rcnn_confidence=0.5
+evt_6f03ced1,detect_d0264b22,2026-06-10T11:40:31,FASTER_RCNN_PERSON,7431.0,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.6%,Check snapshot,faster_rcnn_confidence=0.5
+evt_f99a24fb,detect_7b7777df,2026-06-10T11:40:34,FASTER_RCNN_PERSON,1639.5,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.8%,Check snapshot,faster_rcnn_confidence=0.5
+evt_bdea6587,detect_26303f4d,2026-06-10T11:41:13,FASTER_RCNN_PERSON,2989.0,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.7%,Check snapshot,faster_rcnn_confidence=0.5
+evt_282ced8c,detect_066306a9,2026-06-10T11:41:16,FASTER_RCNN_PERSON,15481.0,CRITICAL,🚨 PERSON DETECTED! Confidence: 99.7%,Check snapshot,faster_rcnn_confidence=0.5
+evt_3b34dd2b,detect_a5383267,2026-06-10T11:45:10,AI_PERSON,524.5,CRITICAL,🚨 PERSON DETECTED! Conf: 99.8%,Check snapshot,faster_rcnn
+evt_ef25cb54,detect_00739d67,2026-06-10T11:45:27,AI_PERSON,794.5,CRITICAL,🚨 PERSON DETECTED! Conf: 99.6%,Check snapshot,faster_rcnn
+evt_c660e9ae,detect_51eb9463,2026-06-10T11:45:48,AI_PERSON,811.5,CRITICAL,🚨 PERSON DETECTED! Conf: 99.7%,Check snapshot,faster_rcnn
+evt_b94325d0,detect_2ea6df01,2026-06-10T11:45:51,AI_PERSON,2199.5,CRITICAL,🚨 PERSON DETECTED! Conf: 99.7%,Check snapshot,faster_rcnn
