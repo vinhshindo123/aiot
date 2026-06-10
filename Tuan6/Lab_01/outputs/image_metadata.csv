@@ -1,0 +1,11 @@
+image_id,device_id,timestamp,source_type,image_path,processed_path,width,height,brightness,processing_status,processing_time_ms,note
+img_c5be35ff08,simulated_camera,2026-06-10T07:51:25,demo_script,data/raw_images/img_c5be35ff08.jpg,data/processed_images/img_c5be35ff08_processed_steps.jpg,640,360,233.51,processed,4.84,demo_frame=0
+img_d663528488,simulated_camera,2026-06-10T07:51:25,demo_script,data/raw_images/img_d663528488.jpg,data/processed_images/img_d663528488_processed_steps.jpg,640,360,233.51,processed,3.19,demo_frame=1
+img_ed10cf6d2d,camera:no_camera_fallback,2026-06-10T07:51:27,motion_capture,data/raw_images/img_ed10cf6d2d.jpg,data/processed_images/img_ed10cf6d2d_processed_steps.jpg,640,360,233.51,processed,12.26,"motion_score=1162.0, threshold=25, min_area=800"
+img_4509852e0b,local_smoke,2026-06-10T07:52:29,script,data/raw_images/img_4509852e0b.jpg,data/processed_images/img_4509852e0b_processed_steps.jpg,640,360,233.51,processed,7.29,python app.py smoke test
+img_cdac8a565c,camera:0,2026-06-10T07:53:18,motion_capture,data/raw_images/img_cdac8a565c.jpg,data/processed_images/img_cdac8a565c_processed_steps.jpg,640,360,233.51,processed,9.17,"motion_score=11104.0, threshold=25, min_area=800"
+img_9f684aadde,local_smoke,2026-06-10T08:01:15,script,data/raw_images/img_9f684aadde.jpg,data/processed_images/img_9f684aadde_processed_steps.jpg,640,360,233.51,processed,5.13,python app.py smoke test
+img_771e14b368,camera:http://172.16.7.218:5000/video_feed,2026-06-10T08:03:28,motion_capture,data/raw_images/img_771e14b368.jpg,data/processed_images/img_771e14b368_processed_steps.jpg,640,480,155.05,processed,3.74,"motion_score=55237.5, threshold=25, min_area=800"
+img_c9e553c3dd,camera:http://172.16.7.218:5000/video_feed,2026-06-10T08:04:29,motion_capture,data/raw_images/img_c9e553c3dd.jpg,data/processed_images/img_c9e553c3dd_processed_steps.jpg,640,480,128.59,processed,5.22,"motion_score=113.5, threshold=25, min_area=800"
+img_8786fd9a1c,local_smoke,2026-06-10T08:14:28,script,data/raw_images/img_8786fd9a1c.jpg,data/processed_images/img_8786fd9a1c_processed_steps.jpg,640,360,233.51,processed,6.69,python app.py smoke test
+img_9cf33c99e3,camera:http://172.16.7.218:5000/video_feed,2026-06-10T08:17:13,camera,data/raw_images/img_9cf33c99e3.jpg,data/processed_images/img_9cf33c99e3_processed_steps.jpg,640,480,182.7,processed,5.69,snapshot button
