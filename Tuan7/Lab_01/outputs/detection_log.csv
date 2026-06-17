@@ -1,0 +1,6 @@
+detection_id,image_id,timestamp,source_type,model_name,model_version,threshold_used,class_name,confidence,bbox_x1,bbox_y1,bbox_x2,bbox_y2,inference_time_ms,annotated_image_path
+det_32a489656d,img_551c969269,2026-06-15T09:16:36,demo_script,fallback_contour_detector,fallback_v1,0.25,visual_object,0.9376,69,109,212,332,22.12,data/annotated_images/img_551c969269_detected.jpg
+det_fec4a94456,img_551c969269,2026-06-15T09:16:36,demo_script,fallback_contour_detector,fallback_v1,0.25,visual_object,0.4604,340,140,481,281,22.12,data/annotated_images/img_551c969269_detected.jpg
+det_1281bc4edd,img_936102c404,2026-06-16T11:48:31,demo_script,yolov8n.pt,lab7_yolo_nano_v1,0.25,frisbee,0.3897,340,140,480,281,206.04,data\annotated_images\img_936102c404_detected.jpg
+det_aa73586832,img_79f0aa27be,2026-06-17T21:49:48,camera,yolov8n.pt,lab7_yolo_nano_v1,0.35,person,0.8056,134,150,570,479,86.98,data\annotated_images\img_79f0aa27be_detected.jpg
+det_df3d6aa18b,img_3718bacdcf,2026-06-17T21:53:40,upload,yolov8n.pt,lab7_yolo_nano_v1,0.35,bus,0.4358,59,190,1950,1761,142.9,data\annotated_images\img_3718bacdcf_detected.jpg
