@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lab 8 v3 - LLM Reasoning AIoT</title>
+  <style>
+    :root {
+      --blue: #174a7c;
+      --light: #f4f7fb;
+      --green: #198754;
+      --orange: #ff9800;
+      --red: #dc3545;
+      --gray: #5f6b7a;
+      --gradient-start: #0d3b66;
+      --gradient-end: #1c77c3;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef3f8;
+      color: #1f2937;
+      transition: all 0.3s ease;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: white;
+      padding: 24px 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      animation: slideDown 0.6s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    header p {
+      margin: 8px 0 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    
+    .card:hover {
+      box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+      transform: translateY(-2px);
+    }
+    
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 17px;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    
+    .card h2 .badge {
+      font-size: 11px;
+      background: #e2e8f0;
+      padding: 2px 10px;
+      border-radius: 12px;
+      color: #475569;
+      font-weight: 500;
+    }
+    
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 10px 0 4px;
+      color: #334155;
+    }
+    
+    select, input[type=number], input[type=range] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 12px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+    
+    select:focus, input:focus {
+      border-color: var(--blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(23, 74, 124, 0.1);
+    }
+    
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 16px;
+      margin: 4px 3px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      color: white;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    button:active {
+      transform: scale(0.96);
+    }
+    
+    button.primary { background: var(--blue); }
+    button.secondary { background: #64748b; }
+    button.green { background: var(--green); }
+    button.orange { background: var(--orange); }
+    button.red { background: var(--red); }
+    
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    
+    .result {
+      border: 2px solid #e8edf4;
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 280px;
+      background: #fafcff;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .result:hover {
+      border-color: var(--blue);
+      box-shadow: 0 2px 12px rgba(23, 74, 124, 0.08);
+    }
+    
+    .result h3 {
+      margin: 0 0 10px;
+      color: #0f172a;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .risk {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 12px;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    .LOW { background: #dcfce7; color: #166534; }
+    .MEDIUM { background: #fef9c3; color: #854d0e; }
+    .HIGH { background: #ffedd5; color: #9a3412; }
+    .CRITICAL { background: #fee2e2; color: #991b1b; }
+    
+    pre {
+      background: #0f172a;
+      color: #d1e7ff;
+      padding: 14px;
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 340px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+      transition: all 0.3s ease;
+    }
+    
+    .sensor-row {
+      border-bottom: 1px solid #eef2f7;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+    }
+    
+    .sensor-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    .sensor-row:hover {
+      background: #f8fafc;
+      padding-left: 6px;
+      border-radius: 8px;
+    }
+    
+    .small { font-size: 12px; color: #64748b; }
+    
+    .timeline {
+      height: 150px;
+      border: 2px solid #e8edf4;
+      border-radius: 12px;
+      background: linear-gradient(#fff, #f8fafc);
+      display: flex;
+      align-items: end;
+      gap: 4px;
+      padding: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .bar {
+      width: 14px;
+      background: linear-gradient(180deg, var(--blue), #4a9eff);
+      border-radius: 4px 4px 0 0;
+      min-height: 3px;
+      transition: all 0.5s ease;
+      animation: barGrow 0.5s ease;
+    }
+    
+    @keyframes barGrow {
+      from { height: 0; }
+      to { height: var(--bar-height); }
+    }
+    
+    .notice {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 12px 16px;
+      border-radius: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .mode-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 13px;
+      margin-left: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .mode-mock { background: #e2e8f0; color: #475569; }
+    .mode-local { background: #dcfce7; color: #166534; }
+    .mode-api { background: #fef9c3; color: #854d0e; }
+    
+    .ollama-status {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #f1f5f9;
+      border-radius: 10px;
+      font-size: 12px;
+      max-height: 160px;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .status-ok { color: #166534; font-weight: 600; }
+    .status-error { color: #991b1b; font-weight: 600; }
+    .status-unknown { color: #854d0e; font-weight: 600; }
+    
+    .test-btn { font-size: 12px; padding: 6px 14px; margin-top: 4px; }
+    
+    .thinking-badge {
+      display: inline-block;
+      padding: 2px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    
+    .thinking-on { background: #fef9c3; color: #854d0e; animation: pulse 1.5s infinite; }
+    .thinking-off { background: #dcfce7; color: #166534; }
+    
+    .sensor-value {
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 14px;
+    }
+    
+    .loader {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #e2e8f0;
+      border-top: 3px solid var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .loading-content {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: scaleIn 0.3s ease;
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    .loading-content .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e2e8f0;
+      border-top: 4px solid var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    
+    .loading-content p {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    
+    .loading-content .sub {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    
+    .progress-bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), #4a9eff);
+      border-radius: 4px;
+      animation: progress 2s ease-in-out infinite;
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    
+    .sensor-controls-wrapper {
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    
+    .sensor-controls-wrapper::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .sensor-controls-wrapper::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    
+    .sensor-controls-wrapper::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .grid3 {
+        grid-template-columns: 1fr;
+      }
+      header {
+        padding: 16px 20px;
+      }
+      header h1 {
+        font-size: 20px;
+      }
+      main {
+        padding: 12px;
+      }
+      .card {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🤖 Lab 8 v3 - LLM Reasoning & Context-aware Decision for AIoT</h1>
+  <p>So sánh trực tiếp: Chỉ cảm biến → Cảm biến + AI models → Cảm biến + AI models + LLM</p>
+</header>
+
+<div id="loadingOverlay" class="loading-overlay" style="display:none;">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p id="loadingText">⏳ Đang gọi LLM...</p>
+    <p class="sub" id="loadingSub">Model đang xử lý, vui lòng chờ</p>
+    <div class="progress-bar">
+      <div class="fill"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section>
+    <div class="card">
+      <h2>📌 1. Chọn kịch bản</h2>
+      <select id="scenario"></select>
+      <p id="scenarioWhy" class="small"></p>
+      <div class="btn-group">
+        <button class="secondary" onclick="resetScenario()">🔄 Reset</button>
+        <button class="green" onclick="startTimeline()">▶️ Start timeline</button>
+        <button class="red" onclick="stopTimeline()">⏹ Stop</button>
+        <button class="orange" onclick="stepTimeline()">⏭ Next step</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>🎛 2. Sensor Control Panel <span class="badge">live</span></h2>
+      <p class="small">Tự chỉnh cảm biến để tạo tình huống mới</p>
+      <div id="sensorControls" class="sensor-controls-wrapper"></div>
+      <button class="green" onclick="applySensors()" style="width:100%; margin-top:12px;">
+        ✅ Apply sensors
+      </button>
+    </div>
+    
+    <div class="card">
+      <h2>⚙️ 3. LLM Configuration</h2>
+      <div>
+        <label>Mode</label>
+        <select id="llmMode" onchange="onModeChange()">
+          <option value="mock">🧪 mock - luôn chạy được</option>
+          <option value="local">🖥 local - Ollama</option>
+          <option value="api">☁️ api - placeholder</option>
+        </select>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span class="small">Mode:</span>
+        <span id="currentModeBadge" class="mode-badge mode-mock">mock</span>
+        <span class="small" style="margin-left:6px;">🧠 Thinking:</span>
+        <span id="thinkingBadge" class="thinking-badge thinking-off">OFF</span>
+      </div>
+      <div id="ollamaStatus" class="ollama-status">
+        <span class="small">🔄 Click "Test Ollama" để kiểm tra kết nối</span>
+      </div>
+      <div class="btn-group">
+        <button class="secondary test-btn" onclick="testOllama()">🔌 Test Ollama</button>
+        <button class="primary" onclick="compare()" id="compareBtn">📊 So sánh 3 tầng</button>
+        <button class="secondary" onclick="refreshState()">🔄 Refresh</button>
+        <button class="secondary" onclick="loadConfig()">⚙️ Load Config</button>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="card">
+      <h2>📈 Live Telemetry Timeline</h2>
+      <div id="currentState" class="notice">Đang tải...</div>
+      <div id="timeline" class="timeline"></div>
+    </div>
+    
+    <div class="card">
+      <h2>📊 Kết quả so sánh 3 tầng</h2>
+      <div class="grid3">
+        <div class="result">
+          <h3>1️⃣ Chỉ cảm biến</h3>
+          <div id="sensorOnly">Đang tải...</div>
+        </div>
+        <div class="result">
+          <h3>2️⃣ Cảm biến + AI models</h3>
+          <div id="sensorAI">Đang tải...</div>
+        </div>
+        <div class="result" id="llmResult">
+          <h3>3️⃣ Cảm biến + AI models + LLM</h3>
+          <div id="sensorAILLM">Đang tải...</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>🧩 Evidence từ các lab trước</h2>
+      <div id="evidence"></div>
+      <p class="small" style="margin-top:10px;">
+        <b>💡 Câu chốt:</b> Lab 3/4/6/7 tạo bằng chứng. Lab 8 dùng LLM để reasoning trên bằng chứng đó.
+      </p>
+    </div>
+    
+    <div class="card">
+      <h2>📄 Context / Raw JSON</h2>
+      <pre id="rawJson">{}</pre>
+    </div>
+  </section>
+</main>
+
+<script>
+let scenarios = [];
+let state = null;
+let compareData = null;
+let isLoading = false;
+let autoRefreshInterval = null;
+
+function showLoading(message = '⏳ Đang gọi LLM...', subMessage = 'Model đang xử lý, vui lòng chờ') {
+  const overlay = document.getElementById('loadingOverlay');
+  document.getElementById('loadingText').textContent = message;
+  document.getElementById('loadingSub').textContent = subMessage;
+  overlay.style.display = 'flex';
+  isLoading = true;
+}
+
+function hideLoading() {
+  document.getElementById('loadingOverlay').style.display = 'none';
+  isLoading = false;
+}
+
+async function api(path, opts={}) {
+  const r = await fetch(path, opts);
+  if (!r.ok) throw new Error(await r.text());
+  return await r.json();
+}
+
+function riskBadge(r) {
+  return `<span class="risk ${r}">${r}</span>`;
+}
+
+function pretty(obj) {
+  return JSON.stringify(obj, null, 2);
+}
+
+async function loadConfig() {
+  try {
+    const config = await api('/llm-config');
+    const statusDiv = document.getElementById('ollamaStatus');
+    statusDiv.innerHTML = `
+      <span class="small">
+        <b>Mode:</b> ${config.mode}<br>
+        <b>Model:</b> ${config.ollama_model}<br>
+        <b>Temperature:</b> ${config.temperature}<br>
+        <b>Thinking:</b> ${config.thinking_mode ? 'ON' : 'OFF'}<br>
+        <b>Timeout:</b> ${config.timeout_sec}s
+      </span>
+    `;
+    document.getElementById('llmMode').value = config.mode;
+    updateModeBadge(config.mode);
+    updateThinkingBadge(config.thinking_mode);
+  } catch(e) {
+    console.error('Load config error:', e);
+  }
+}
+
+function updateModeBadge(mode) {
+  const badge = document.getElementById('currentModeBadge');
+  badge.textContent = mode;
+  badge.className = 'mode-badge mode-' + mode;
+}
+
+function updateThinkingBadge(thinking) {
+  const badge = document.getElementById('thinkingBadge');
+  badge.textContent = thinking ? 'ON' : 'OFF';
+  badge.className = 'thinking-badge ' + (thinking ? 'thinking-on' : 'thinking-off');
+}
+
+function onModeChange() {
+  const mode = document.getElementById('llmMode').value;
+  updateModeBadge(mode);
+  compare();
+}
+
+async function testOllama() {
+  const statusDiv = document.getElementById('ollamaStatus');
+  statusDiv.innerHTML = '<span class="small">⏳ Đang test kết nối Ollama...</span>';
+  
+  try {
+    const result = await api('/test-ollama');
+    let html = `<span class="small">`;
+    html += `<b>Base URL:</b> ${result.base_url}<br>`;
+    html += `<b>Model:</b> ${result.model}<br>`;
+    html += `<b>Status:</b> <span class="status-${result.status}">${result.status}</span><br>`;
+    if (result.latency_ms) html += `<b>Latency:</b> ${result.latency_ms}ms<br>`;
+    if (result.inference_latency_ms) html += `<b>Inference:</b> ${result.inference_latency_ms}ms<br>`;
+    html += `<b>Thinking mode:</b> ${result.thinking_mode ? 'ON' : 'OFF'}<br>`;
+    html += `<b>Message:</b> ${result.message}`;
+    html += `</span>`;
+    statusDiv.innerHTML = html;
+    updateThinkingBadge(result.thinking_mode);
+  } catch(e) {
+    statusDiv.innerHTML = `<span class="small status-error">❌ Error: ${e.message}</span>`;
+  }
+}
+
+function startAutoRefresh() {
+  if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+  autoRefreshInterval = setInterval(async () => {
+    if (state?.running && !isLoading) {
+      try {
+        const newState = await api('/live/state');
+        state = newState;
+        renderState();
+        await compare();
+      } catch(e) {
+        console.error('Auto-refresh error:', e);
+      }
+    }
+  }, 3000);
+}
+
+async function init() {
+  try {
+    scenarios = await api('/scenarios');
+    const sel = document.getElementById('scenario');
+    sel.innerHTML = scenarios.map(s => `<option value="${s.scenario_id}">${s.title}</option>`).join('');
+    sel.onchange = resetScenario;
+    await resetScenario();
+    await loadConfig();
+    
+    const config = await api('/llm-config');
+    document.getElementById('llmMode').value = config.mode;
+    updateModeBadge(config.mode);
+    updateThinkingBadge(config.thinking_mode);
+    
+    const es = new EventSource('/stream/events');
+    es.onmessage = (ev) => {
+      try {
+        const data = JSON.parse(ev.data);
+        state = data.state;
+        renderState();
+      } catch(e) {
+        console.error('Event parse error:', e);
+      }
+    };
+    es.onerror = () => console.log('EventSource disconnected');
+    
+    startAutoRefresh();
+  } catch(e) {
+    console.error('Init error:', e);
+    document.getElementById('currentState').innerHTML = `<span class="status-error">❌ Error: ${e.message}</span>`;
+  }
+}
+
+async function resetScenario() {
+  const sid = document.getElementById('scenario').value;
+  state = await api(`/live/reset?scenario_id=${sid}`, {method:'POST'});
+  const s = scenarios.find(x => x.scenario_id === sid);
+  document.getElementById('scenarioWhy').textContent = s ? s.why : '';
+  renderState();
+  await compare();
+}
+
+async function startTimeline() {
+  const sid = document.getElementById('scenario').value;
+  await api(`/live/start?scenario_id=${sid}&interval_sec=2`, {method:'POST'});
+}
+
+async function stopTimeline() {
+  await api('/live/stop', {method:'POST'});
+}
+
+async function stepTimeline() {
+  state = await api('/live/step', {method:'POST'});
+  renderState();
+  await compare();
+}
+
+async function refreshState() {
+  state = await api('/live/state');
+  renderState();
+  await compare();
+}
+
+function renderState() {
+  if (!state) return;
+  
+  document.getElementById('currentState').innerHTML = `
+    <b>${state.scenario_title}</b><br>
+    step=${state.step_index}, running=${state.running ? '🟢' : '🔴'}<br>
+    <b>Sensors:</b> ${Object.entries(state.sensors).map(([k,v]) => `${k}=<span class="sensor-value">${v}</span>`).join(', ')}
+  `;
+  
+  renderControls();
+  renderTimeline();
+}
+
+function renderControls() {
+  const box = document.getElementById('sensorControls');
+  if (!state || !state.editable_sensors) {
+    box.innerHTML = '<span class="small">Loading sensor controls...</span>';
+    return;
+  }
+  
+  const schema = state.editable_sensors || {};
+  const sensors = state.sensors || {};
+  let html = '';
+  
+  for (const [key, spec] of Object.entries(schema)) {
+    const val = sensors[key] !== undefined ? sensors[key] : (spec.options ? spec.options[0] : 0);
+    html += `<div class="sensor-row">`;
+    html += `<label>${key.replace(/_/g, ' ')} ${spec.unit ? '('+spec.unit+')' : ''}</label>`;
+    
+    if (spec.type === 'number') {
+      const currentVal = Number(val);
+      html += `
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input id="input_${key}" 
+                 type="range" 
+                 min="${spec.min}" 
+                 max="${spec.max}" 
+                 step="${spec.step}" 
+                 value="${currentVal}"
+                 style="flex:1;"
+                 oninput="updateSensorValue('${key}', this.value)">
+          <span class="small" style="min-width:70px; text-align:right; font-size:14px; font-weight:600; color:var(--blue);">
+            <b id="val_${key}">${currentVal}</b>
+          </span>
+        </div>
+      `;
+    } else if (spec.type === 'select') {
+      html += `
+        <select id="input_${key}" style="margin-top:4px;">
+          ${spec.options.map(o => 
+            `<option value="${o}" ${String(o)===String(val)?'selected':''}>${o}</option>`
+          ).join('')}
+        </select>
+      `;
+    }
+    html += `</div>`;
+  }
+  box.innerHTML = html;
+}
+
+function updateSensorValue(key, value) {
+  const valSpan = document.getElementById('val_' + key);
+  if (valSpan) {
+    valSpan.textContent = value;
+  }
+}
+
+async function applySensors() {
+  if (!state || !state.editable_sensors) {
+    alert('Please wait for state to load');
+    return;
+  }
+  
+  const schema = state.editable_sensors || {};
+  const updates = {};
+  
+  for (const key of Object.keys(schema)) {
+    const input = document.getElementById('input_'+key);
+    if (input) {
+      updates[key] = input.value;
+    }
+  }
+  
+  if (Object.keys(updates).length === 0) {
+    alert('No sensors to update');
+    return;
+  }
+  
+  try {
+    console.log('Applying updates:', updates);
+    state = await api('/live/update-sensor', {
+      method:'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({updates})
+    });
+    renderState();
+    await compare();
+  } catch(e) {
+    alert('Error updating sensors: ' + e.message);
+    console.error('Apply sensors error:', e);
+  }
+}
+
+function renderTimeline() {
+  const hist = state?.history || [];
+  const container = document.getElementById('timeline');
+  
+  if (!hist.length) {
+    container.innerHTML = '<span class="small">No numeric timeline yet.</span>';
+    return;
+  }
+  
+  let key = null;
+  const numericKeys = ['co2_ppm', 'temperature_c', 'humidity_percent', 'person_count', 'smoke_level', 'gas_level', 'fall_confidence'];
+  for (const testKey of numericKeys) {
+    if (hist.some(x => x[testKey] !== undefined && !isNaN(Number(x[testKey])))) {
+      key = testKey;
+      break;
+    }
+  }
+  
+  if (!key) {
+    container.innerHTML = '<span class="small">No numeric data available.</span>';
+    return;
+  }
+  
+  const values = hist.map(x => {
+    const v = Number(x[key] || 0);
+    return isNaN(v) ? 0 : v;
+  });
+  
+  const max = Math.max(...values, 1);
+  container.innerHTML = values.map(v => {
+    const height = Math.max(3, v/max*130);
+    return `<div class="bar" title="${key}: ${v}" style="height:${height}px; --bar-height:${height}px;"></div>`;
+  }).join('');
+}
+
+async function compare() {
+  if (isLoading) return;
+  if (!state) {
+    await refreshState();
+    if (!state) return;
+  }
+  
+  const sid = state.scenario_id;
+  const mode = document.getElementById('llmMode').value;
+  const isLocal = mode === 'local';
+  
+  const llmDiv = document.getElementById('sensorAILLM');
+  llmDiv.innerHTML = `
+    <div style="text-align:center; padding:20px;">
+      <div class="loader"></div>
+      <p style="margin:10px 0 0; font-weight:500;">⏳ ${isLocal ? 'Gọi Ollama local...' : 'Đang xử lý...'}</p>
+      <p class="small">${isLocal ? 'Model đang suy luận, vui lòng chờ' : 'Đang tổng hợp kết quả'}</p>
+    </div>
+  `;
+  
+  if (isLocal) {
+    showLoading('⏳ Đang gọi Ollama...', 'Model đang suy luận, vui lòng chờ');
+  }
+  
+  try {
+    const startTime = Date.now();
+    const data = await api(`/compare-three-levels/${sid}?mode=${mode}`);
+    const elapsed = Date.now() - startTime;
+    console.log(`Compare completed in ${elapsed}ms`);
+    compareData = data;
+    renderCompare(data);
+  } catch(e) {
+    console.error('Compare error:', e);
+    document.getElementById('sensorAILLM').innerHTML = `<span class="status-error">❌ Error: ${e.message}</span>`;
+  } finally {
+    hideLoading();
+  }
+}
+
+function renderCompare(data) {
+  const so = data.sensor_only;
+  document.getElementById('sensorOnly').innerHTML = `
+    ${riskBadge(so.risk_level)}
+    <p style="margin:8px 0;"><b>Summary:</b> ${so.summary}</p>
+    <p style="margin:8px 0;"><b>Action:</b> ${so.recommended_action}</p>
+    <p class="small" style="margin:4px 0;">${so.reason}</p>
+    <p class="small" style="margin:4px 0; color:#991b1b;"><b>Hạn chế:</b> ${so.limitations?.join('; ') || 'N/A'}</p>
+  `;
+  
+  const ai = data.sensor_plus_ai_models;
+  document.getElementById('sensorAI').innerHTML = `
+    ${riskBadge(ai.risk_level)}
+    <p style="margin:8px 0;"><b>Summary:</b> ${ai.summary}</p>
+    <p style="margin:8px 0;"><b>Action:</b> ${ai.recommended_action}</p>
+    <p class="small" style="margin:4px 0;">${ai.reason}</p>
+    <p class="small" style="margin:4px 0; color:#991b1b;"><b>Hạn chế:</b> ${ai.limitations?.join('; ') || 'N/A'}</p>
+  `;
+  
+  const llm = data.sensor_ai_llm.final_decision;
+  const provider = data.sensor_ai_llm.provider || 'unknown';
+  const latency = data.sensor_ai_llm.latency_ms || 0;
+  const validated = data.sensor_ai_llm.validated ? '✅' : '⚠️';
+  
+  const latencyColor = latency > 5000 ? '#dc3545' : latency > 1000 ? '#ff9800' : '#198754';
+  
+  document.getElementById('sensorAILLM').innerHTML = `
+    ${riskBadge(llm.risk_level)}
+    <p style="margin:8px 0;"><b>📝 Situation:</b> ${llm.situation_summary}</p>
+    <p style="margin:8px 0;"><b>🎯 Action:</b> ${llm.recommended_action}</p>
+    <p style="margin:4px 0;"><b>👤 Human review:</b> ${llm.need_human_review ? '✅ Required' : '❌ Not required'}</p>
+    <p style="margin:4px 0;"><b>🔒 Control allowed:</b> ${llm.control_allowed ? '✅ Yes' : '❌ No'}</p>
+    <p class="small" style="margin:4px 0;"><b>🚫 Blocked:</b> ${llm.blocked_reason}</p>
+    <p class="small" style="margin:4px 0;"><b>📋 Evidence:</b> ${llm.evidence_used?.join(', ') || 'N/A'}</p>
+    <p class="small" style="margin:4px 0;">
+      <b>⚡ Provider:</b> ${provider} | 
+      <b>⏱ Latency:</b> <span style="color:${latencyColor}; font-weight:600;">${latency}ms</span> ${validated}
+    </p>
+  `;
+  
+  document.getElementById('evidence').innerHTML = `<pre>${pretty(ai.ai_model_outputs || {})}</pre>`;
+  document.getElementById('rawJson').textContent = pretty(data);
+}
+
+init().catch(err => {
+  console.error('Init error:', err);
+  document.getElementById('currentState').innerHTML = `<span class="status-error">❌ Error: ${err.message}</span>`;
+});
+</script>
+</body>
+</html>

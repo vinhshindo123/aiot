@@ -1,0 +1,129 @@
+timestamp,scenario_id,mode,sensor_risk,ai_risk,llm_risk
+2026-06-17T15:58:24.680724+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T15:58:24.686724+00:00,fire_alarm_conflict,mock,LOW,LOW,MEDIUM
+2026-06-17T16:14:09.402209+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:14:19.438730+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:14:28.021381+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:19:29.484198+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:19:42.278112+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:27:08.159033+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:27:12.239850+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:29:00.780773+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:29:07.564947+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:29:31.599829+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:29:40.217819+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:29:48.673827+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:29:59.774316+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:23.306053+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:24.182162+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:30:25.846031+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T16:30:26.012996+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:30:26.180369+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:26.348702+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:26.523753+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:30:26.684507+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T16:30:26.864256+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:30:27.029168+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:27.197305+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:27.377895+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:30:27.550019+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T16:30:27.718781+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:30:27.898074+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:28.075958+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:28.252960+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:30:28.430028+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T16:30:28.608577+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:30:28.793817+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:28.975396+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-17T16:30:29.173962+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-17T16:30:29.522092+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-17T16:30:29.983673+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:31:23.792803+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:32:24.037952+00:00,lab_overcrowded_high_co2,local,CRITICAL,CRITICAL,CRITICAL
+2026-06-17T16:32:48.246996+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:36:06.085482+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:37:19.438798+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:38:33.940056+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:40:50.839717+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:40:50.850713+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:40:50.877711+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-18T00:40:51.657848+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T00:40:51.843846+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:40:52.032188+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:40:52.217472+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:40:52.713350+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-18T00:40:53.232395+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T00:40:53.420587+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:40:53.626737+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:40:54.044754+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:47:46.041528+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:48:43.796946+00:00,fire_alarm_conflict,mock,LOW,LOW,MEDIUM
+2026-06-18T00:48:50.640634+00:00,fall_or_bending_ambiguity,mock,LOW,LOW,LOW
+2026-06-18T00:48:54.789590+00:00,ppe_danger_zone,mock,LOW,LOW,LOW
+2026-06-18T00:48:57.442686+00:00,greenhouse_leaf_disease_risk,mock,LOW,LOW,LOW
+2026-06-18T00:49:00.056829+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:50:37.387089+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T00:51:00.594836+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T00:51:09.056748+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T00:51:24.565678+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:51:40.594024+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T00:51:42.343115+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T00:51:45.247624+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-18T00:51:47.636334+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T00:54:55.643057+00:00,lab_overcrowded_high_co2,local,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T01:15:45.206735+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T01:17:04.607198+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T01:25:08.507671+00:00,lab_overcrowded_high_co2,mock,mock (built-in),0.0,LOW,HIGH,HIGH,True
+2026-06-18T01:33:58.671918+00:00,lab_overcrowded_high_co2,mock,mock (built-in),mock,0.0,LOW,HIGH,HIGH,True
+2026-06-18T01:35:01.586294+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32059.79,LOW,HIGH,HIGH,True
+2026-06-18T01:35:33.648798+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32055.64,LOW,HIGH,HIGH,True
+2026-06-18T01:35:49.641304+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32060.67,LOW,HIGH,HIGH,True
+2026-06-18T01:35:50.081818+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32030.56,LOW,HIGH,HIGH,True
+2026-06-18T01:35:50.601737+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32045.78,LOW,HIGH,HIGH,True
+2026-06-18T01:35:50.775603+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32046.47,LOW,HIGH,HIGH,True
+2026-06-18T01:36:05.705522+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32047.67,LOW,HIGH,HIGH,True
+2026-06-18T01:36:21.707122+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32056.28,LOW,HIGH,HIGH,True
+2026-06-18T01:36:22.146201+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32057.05,LOW,HIGH,HIGH,True
+2026-06-18T01:36:22.654629+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32046.28,LOW,HIGH,HIGH,True
+2026-06-18T01:36:22.846349+00:00,lab_overcrowded_high_co2,local,local-fallback (Ollama error),local-fallback,32062.83,LOW,HIGH,HIGH,True
+2026-06-18T02:04:42.468966+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:17:43.665738+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:20:14.284793+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,MEDIUM
+2026-06-18T02:22:34.737819+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:23:05.487371+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:23:05.814858+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:23:05.957208+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:23:06.892630+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:26:34.154812+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:27:29.143337+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:31:03.442027+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:33:08.364347+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,MEDIUM
+2026-06-18T02:38:13.927714+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:38:43.625662+00:00,lab_overcrowded_high_co2,local,MEDIUM,HIGH,HIGH
+2026-06-18T02:38:53.394150+00:00,lab_overcrowded_high_co2,local,HIGH,HIGH,HIGH
+2026-06-18T02:39:02.886378+00:00,lab_overcrowded_high_co2,local,HIGH,HIGH,HIGH
+2026-06-18T02:39:16.527912+00:00,lab_overcrowded_high_co2,local,HIGH,HIGH,HIGH
+2026-06-18T02:45:11.167418+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:47:00.900992+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:47:00.913991+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:47:05.906152+00:00,lab_overcrowded_high_co2,local,HIGH,HIGH,HIGH
+2026-06-18T02:47:05.922157+00:00,lab_overcrowded_high_co2,local,HIGH,HIGH,HIGH
+2026-06-18T02:47:07.727494+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:47:11.346067+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:47:11.364065+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:47:15.906575+00:00,lab_overcrowded_high_co2,local,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T02:47:15.923024+00:00,lab_overcrowded_high_co2,local,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T02:56:02.631052+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:56:31.265346+00:00,lab_overcrowded_high_co2,local,LOW,HIGH,HIGH
+2026-06-18T02:57:12.554364+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:57:17.684467+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:57:20.672986+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-18T02:57:23.691311+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T02:57:26.692197+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:57:29.692213+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T02:57:32.672212+00:00,lab_overcrowded_high_co2,mock,CRITICAL,CRITICAL,CRITICAL
+2026-06-18T02:57:35.679184+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:57:38.679709+00:00,lab_overcrowded_high_co2,mock,MEDIUM,HIGH,HIGH
+2026-06-18T02:57:41.689111+00:00,lab_overcrowded_high_co2,mock,HIGH,HIGH,HIGH
+2026-06-18T02:57:44.688818+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
+2026-06-18T02:57:47.681385+00:00,lab_overcrowded_high_co2,mock,LOW,HIGH,HIGH
